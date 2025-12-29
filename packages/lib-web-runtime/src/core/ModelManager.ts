@@ -19,7 +19,7 @@ export interface ModelLoadOptions {
  */
 export class ModelManager {
   private pipe: any = null;
-  private modelId: string = 'google/gemma-1.1-2b-it'; // Default model (subject to change to specific FunctionGemma ONNX)
+  private modelId: string = 'google/functiongemma-270m-it'; // Default model
 
   /**
    * Loads the model.
@@ -27,7 +27,7 @@ export class ModelManager {
    */
   async load(options: ModelLoadOptions = {}): Promise<void> {
     if (this.pipe) {
-      return; 
+      return;
     }
 
     if (options.modelId) {
