@@ -38,7 +38,7 @@ export class ModelManager {
     // For now we use a placeholder or a text-generation pipeline.
     this.pipe = await pipeline('text-generation', this.modelId, {
       progress_callback: options.progressCallback,
-      quantized: options.quantized ?? true,
+      dtype: options.quantized ? 'q4' : 'fp32',
     } as any);
   }
 
