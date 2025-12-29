@@ -9,7 +9,7 @@ FunctionGemma Toolkit is designed to bridge the gap between LLM fine-tuning and 
 ## Directory Structure
 
 - `trainer/`: Contains the Flask/FastAPI backend and React/Vue frontend for the training web tool. Uses Docker for environment isolation.
-- `packages/lib-web-game/`: A TypeScript/JavaScript library that wraps `transformers.js`. It handles model loading, prompt templating for FunctionGemma, and ONNX runtime optimization.
+- `packages/lib-web-runtime/`: A TypeScript/JavaScript library that wraps `transformers.js`. It handles model loading, prompt templating for FunctionGemma, and ONNX runtime optimization.
 - `examples/`: Contains end-to-end examples, such as an "Inventory Management" demo or "NPC Dialog" demo.
 - `docs/`: Technical documentation, architectural diagrams, and research notes.
 
@@ -38,4 +38,4 @@ FunctionGemma Toolkit is designed to bridge the gap between LLM fine-tuning and 
 When working in this repository:
 - Always check `GEMINI.md` (this file) and `task.md` (in the workspace) before starting a new task.
 - Follow the GitHub CLI process for issues and PRs.
-- Maintain the clean directory structure described above.
+    - `packages/lib-web-runtime` (Library)
