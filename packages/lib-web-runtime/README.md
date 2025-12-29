@@ -24,7 +24,7 @@ import { FunctionGemmaWeb } from '@fg-toolkit/lib-web-runtime';
 async function main() {
   // Initialize the runtime
   const runtime = new FunctionGemmaWeb({
-    modelId: 'google/functiongemma-270m-it', // Replace with your ONNX converted model path / ID
+    modelId: 'onnx-community/functiongemma-270m-it-ONNX', // Replace with your ONNX converted model path / ID
     quantized: true,
   });
 

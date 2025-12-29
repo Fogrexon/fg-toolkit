@@ -1,5 +1,5 @@
 
-import { pipeline, env } from '@xenova/transformers';
+import { pipeline, env } from '@huggingface/transformers';
 
 // Skip local checks for browser environment compatibility
 env.allowLocalModels = false;
@@ -11,7 +11,7 @@ env.useBrowserCache = true;
 export interface ModelLoadOptions {
   modelId?: string;
   quantized?: boolean;
-  progressCallback?: (progress: number) => void;
+  progressCallback?: (progress: any) => void;
 }
 
 /**
@@ -19,7 +19,7 @@ export interface ModelLoadOptions {
  */
 export class ModelManager {
   private pipe: any = null;
-  private modelId: string = 'google/functiongemma-270m-it'; // Default model
+  private modelId: string = 'onnx-community/functiongemma-270m-it-ONNX'; // Default model
 
   /**
    * Loads the model.
@@ -39,7 +39,7 @@ export class ModelManager {
     this.pipe = await pipeline('text-generation', this.modelId, {
       progress_callback: options.progressCallback,
       quantized: options.quantized ?? true,
-    });
+    } as any);
   }
 
   /**
