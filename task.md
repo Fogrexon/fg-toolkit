@@ -11,3 +11,8 @@
 - [x] Create initial Issue and PR for the baseline setup <!-- id: 8 -->
 - [x] Create a Roadmap Issue with detailed remaining tasks <!-- id: 9 -->
 - [x] Sync workspace state for Cross-PC migration <!-- id: 10 -->
+
+<!-- From Issue #3 -->
+- [x] Implement model loading and caching mechanism.
+- [x] Develop prompt templating system for FunctionGemma.
+- [x] Create high-level API for function calling from client logic.
