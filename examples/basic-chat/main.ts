@@ -8,7 +8,6 @@ const sendBtn = document.getElementById('send-btn') as HTMLButtonElement;
 // Allow local model loading if needed (though we use transformers.js default behavior usually)
 // For this example, we assume internet access to download the model from HF
 const runtime = new FunctionGemmaWeb({
-    modelId: 'google/functiongemma-270m-it',
     quantized: true,
     progressCallback: (progress: any) => {
         if (progress.status === 'progress') {
