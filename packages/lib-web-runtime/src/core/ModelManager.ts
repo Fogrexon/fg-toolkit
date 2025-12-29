@@ -1,5 +1,4 @@
-
-import { pipeline, env } from '@huggingface/transformers';
+import { pipeline, env, TextStreamer } from '@huggingface/transformers';
 
 // Skip local checks for browser environment compatibility
 env.allowLocalModels = false;
@@ -11,7 +10,7 @@ env.useBrowserCache = true;
 export interface ModelLoadOptions {
   modelId?: string;
   quantized?: boolean;
-  progressCallback?: (progress: any) => void;
+  progressCallback?: (progress: number) => void;
 }
 
 /**
@@ -44,19 +43,27 @@ export class ModelManager {
 
   /**
    * Generates text based on the provided prompt.
-   * @param prompt The input prompt
+   * @param input The input prompt or messages
    * @param maxNewTokens Maximum new tokens to generate
+   * @param onUpdate Optional callback for streaming updates
    * @returns The generated text
    */
-  async generate(input: string | any[], maxNewTokens: number = 128): Promise<string> {
+  async generate(input: string | any[], maxNewTokens: number = 128, onUpdate?: (token: string) => void): Promise<string> {
     if (!this.pipe) {
       throw new Error('Model not loaded. Call load() first.');
     }
+
+    const streamer = onUpdate ? new TextStreamer(this.pipe.tokenizer, {
+      skip_prompt: true,
+      skip_special_tokens: true,
+      callback_function: onUpdate,
+    }) : undefined;
 
     const output = await this.pipe(input, {
       max_new_tokens: maxNewTokens,
       do_sample: false,
       return_full_text: false,
+      streamer,
     });
 
     // When using chat input (array), the output is typically the last generated message object or text depending on version

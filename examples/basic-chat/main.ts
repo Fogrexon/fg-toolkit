@@ -52,9 +52,29 @@ async function handleSend() {
     sendBtn.disabled = true;
     statusEl.textContent = 'Status: Generating...';
 
+    // Create a placeholder message for the model response
+    const modelMsgDiv = document.createElement('div');
+    modelMsgDiv.className = 'message model';
+    modelMsgDiv.textContent = '...'; // Loading indicator
+    chatHistoryEl.appendChild(modelMsgDiv);
+    chatHistoryEl.scrollTop = chatHistoryEl.scrollHeight;
+
+    let fullResponse = "";
+    let isFirstToken = true;
+
     try {
-        const response = await runtime.chat(messages);
-        appendMessage('model', response);
+        const response = await runtime.chat(messages, undefined, (token) => {
+            if (isFirstToken) {
+                modelMsgDiv.textContent = ""; // Clear loading indicator
+                isFirstToken = false;
+            }
+            fullResponse += token;
+            modelMsgDiv.textContent = fullResponse;
+            chatHistoryEl.scrollTop = chatHistoryEl.scrollHeight;
+        });
+
+        // Final update to ensure everything is consistent (though callback usually handles it)
+        modelMsgDiv.textContent = response;
         messages.push({ role: 'model', content: response });
         statusEl.textContent = 'Status: Ready';
     } catch (err) {
