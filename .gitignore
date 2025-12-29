@@ -3,4 +3,5 @@ node_modules/
 *.onnx
 .env
 dist/
+**/dist/
 .DS_Store
