@@ -39,6 +39,13 @@ export class FunctionGemmaWeb {
      * @returns Generated output string
      */
     async chat(messages: Message[], tools?: FunctionTool[]): Promise<string> {
+        // Since we upgraded to @huggingface/transformers v3, we can pass messages directly to the pipeline.
+        // If no tools are present, we use the standard chat template provided by the model.
+        // TODO: Handle tools injection when needed. For now, rely on pipeline for basic chat if no tools.
+        if (!tools || tools.length === 0) {
+            return await this.modelManager.generate(messages);
+        }
+
         const prompt = this.templateEngine.applyTemplate(messages, tools);
         return await this.modelManager.generate(prompt);
     }
