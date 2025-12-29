@@ -16,3 +16,7 @@
 - [x] Implement model loading and caching mechanism.
 - [x] Develop prompt templating system for FunctionGemma.
 - [x] Create high-level API for function calling from client logic.
+- [ ] Configure NPM distribution and documentation.
+- [ ] Create an 'Inventory Management' end-to-end demo.
+- [ ] Create an 'NPC Dialogue' demo.
+- [ ] Complete technical documentation in docs/.
