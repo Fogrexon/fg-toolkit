@@ -1,36 +1,72 @@
-import { FunctionGemmaWeb } from '@fg-toolkit/lib-web-runtime';
+import { Message } from '@fg-toolkit/lib-web-runtime';
 
 const statusEl = document.getElementById('status')!;
 const chatHistoryEl = document.getElementById('chat-history')!;
 const userInputEl = document.getElementById('user-input') as HTMLInputElement;
 const sendBtn = document.getElementById('send-btn') as HTMLButtonElement;
 
-// Allow local model loading if needed (though we use transformers.js default behavior usually)
-// For this example, we assume internet access to download the model from HF
-const runtime = new FunctionGemmaWeb({
-    quantized: false,
-    progressCallback: (progress: any) => {
-        if (progress.status === 'progress') {
-            statusEl.textContent = `Loading model: ${Math.round(progress.progress)}%`;
-        } else {
-            statusEl.textContent = `Status: ${progress.status}`;
-        }
-    }
-});
+// Create worker
+const worker = new Worker(new URL('./worker.ts', import.meta.url), { type: 'module' });
 
-let messages: { role: 'user' | 'model' | 'function'; content: string }[] = [];
+let messages: Message[] = [];
+let pendingResolver: ((value: string) => void) | null = null;
+let currentModelMsgDiv: HTMLDivElement | null = null;
+let currentFullResponse = "";
+
+worker.onmessage = (e) => {
+    const data = e.data;
+    switch (data.type) {
+        case 'status':
+            if (data.status === 'ready') {
+                statusEl.textContent = 'Status: Ready';
+                userInputEl.disabled = false;
+                sendBtn.disabled = false;
+            } else if (data.status === 'progress') {
+                statusEl.textContent = `Loading model: ${Math.round(data.progress)}%`;
+            } else {
+                statusEl.textContent = `Status: ${data.status}`;
+            }
+            break;
+        case 'token':
+            if (currentModelMsgDiv) {
+                if (currentModelMsgDiv.textContent === '...') {
+                    currentModelMsgDiv.textContent = "";
+                }
+                currentFullResponse += data.token;
+                currentModelMsgDiv.textContent = currentFullResponse;
+                chatHistoryEl.scrollTop = chatHistoryEl.scrollHeight;
+            }
+            break;
+        case 'result':
+            statusEl.textContent = 'Status: Ready';
+            if (pendingResolver) {
+                pendingResolver(data.content);
+                pendingResolver = null;
+            }
+            currentModelMsgDiv = null;
+
+            // Restore UI
+            userInputEl.disabled = false;
+            sendBtn.disabled = false;
+            userInputEl.focus();
+            break;
+        case 'error':
+            statusEl.textContent = `Error: ${data.error}`;
+            console.error(data.error);
+            userInputEl.disabled = false;
+            sendBtn.disabled = false;
+            break;
+    }
+};
 
 async function init() {
-    try {
-        statusEl.textContent = 'Status: Loading model... (this may take a while first time)';
-        await runtime.init();
-        statusEl.textContent = 'Status: Ready';
-        userInputEl.disabled = false;
-        sendBtn.disabled = false;
-    } catch (err) {
-        statusEl.textContent = `Error: ${err}`;
-        console.error(err);
-    }
+    statusEl.textContent = 'Status: Initializing worker...';
+    worker.postMessage({
+        type: 'init',
+        config: {
+            quantized: true
+        }
+    });
 }
 
 function appendMessage(role: 'user' | 'model', text: string) {
@@ -39,6 +75,14 @@ function appendMessage(role: 'user' | 'model', text: string) {
     div.textContent = text;
     chatHistoryEl.appendChild(div);
     chatHistoryEl.scrollTop = chatHistoryEl.scrollHeight;
+}
+
+// We wrap the worker response in a Promise to simulate async/await flow
+function chatWithWorker(msgs: Message[]): Promise<string> {
+    return new Promise((resolve, reject) => {
+        pendingResolver = resolve;
+        worker.postMessage({ type: 'chat', messages: msgs });
+    });
 }
 
 async function handleSend() {
@@ -52,38 +96,21 @@ async function handleSend() {
     sendBtn.disabled = true;
     statusEl.textContent = 'Status: Generating...';
 
-    // Create a placeholder message for the model response
+    // Create placeholder
     const modelMsgDiv = document.createElement('div');
     modelMsgDiv.className = 'message model';
-    modelMsgDiv.textContent = '...'; // Loading indicator
+    modelMsgDiv.textContent = '...';
     chatHistoryEl.appendChild(modelMsgDiv);
     chatHistoryEl.scrollTop = chatHistoryEl.scrollHeight;
 
-    let fullResponse = "";
-    let isFirstToken = true;
+    currentModelMsgDiv = modelMsgDiv;
+    currentFullResponse = "";
 
     try {
-        const response = await runtime.chat(messages, undefined, (token) => {
-            if (isFirstToken) {
-                modelMsgDiv.textContent = ""; // Clear loading indicator
-                isFirstToken = false;
-            }
-            fullResponse += token;
-            modelMsgDiv.textContent = fullResponse;
-            chatHistoryEl.scrollTop = chatHistoryEl.scrollHeight;
-        });
-
-        // Final update to ensure everything is consistent (though callback usually handles it)
-        modelMsgDiv.textContent = response;
+        const response = await chatWithWorker(messages);
         messages.push({ role: 'model', content: response });
-        statusEl.textContent = 'Status: Ready';
     } catch (err) {
-        statusEl.textContent = `Error: ${err}`;
         console.error(err);
-    } finally {
-        userInputEl.disabled = false;
-        sendBtn.disabled = false;
-        userInputEl.focus();
     }
 }
 
