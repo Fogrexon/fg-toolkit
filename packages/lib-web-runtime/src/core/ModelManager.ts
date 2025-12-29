@@ -65,10 +65,19 @@ export class ModelManager {
     // Actually pipeline text-generation with chat inputs often returns the generated assistant message.
 
     const generated = output[0].generated_text;
-    // Check if it's an object (Message) or string
-    if (typeof generated === 'object' && generated.content) {
+
+    // If generated is an array (conversation history), take the last message
+    if (Array.isArray(generated)) {
+      const lastMessage = generated[generated.length - 1];
+      return lastMessage.content;
+    }
+
+    // Check if it's a single object (Message) with content
+    if (typeof generated === 'object' && generated && generated.content) {
       return generated.content;
     }
-    return generated;
+
+    // Fallback: assume it's a string
+    return String(generated);
   }
 }
