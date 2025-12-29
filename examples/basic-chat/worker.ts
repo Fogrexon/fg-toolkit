@@ -5,7 +5,7 @@ type WorkerMessage =
     | { type: 'init', config: any }
     | { type: 'chat', messages: Message[] };
 
-type WorkerResponse =
+export type WorkerResponse =
     | { type: 'status', status: string, progress?: number }
     | { type: 'token', token: string }
     | { type: 'result', content: string }

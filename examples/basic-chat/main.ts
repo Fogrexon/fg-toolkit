@@ -79,7 +79,7 @@ function appendMessage(role: 'user' | 'model', text: string) {
 
 // We wrap the worker response in a Promise to simulate async/await flow
 function chatWithWorker(msgs: Message[]): Promise<string> {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
         pendingResolver = resolve;
         worker.postMessage({ type: 'chat', messages: msgs });
     });
