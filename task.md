@@ -17,6 +17,7 @@
 - [x] Develop prompt templating system for FunctionGemma.
 - [x] Create high-level API for function calling from client logic.
 - [x] Configure NPM distribution and documentation.
+- [x] Create a 'Basic Chat' demo (Baseline implementation).
 - [ ] Create an 'Inventory Management' end-to-end demo.
 - [ ] Create an 'NPC Dialogue' demo.
 - [ ] Complete technical documentation in docs/.
