@@ -1,0 +1,19 @@
+{
+    "name": "fg-toolkit-examples",
+    "private": true,
+    "version": "0.0.0",
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "tsc && vite build",
+        "preview": "vite preview"
+    },
+    "devDependencies": {
+        "@types/node": "^25.0.3",
+        "typescript": "^5.9.3",
+        "vite": "^5.4.21"
+    },
+    "dependencies": {
+        "@fg-toolkit/lib-web-runtime": "file:../packages/lib-web-runtime"
+    }
+}
