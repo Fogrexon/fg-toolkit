@@ -20,5 +20,8 @@ export default defineConfig({
         fs: {
             strict: false
         }
+    },
+    optimizeDeps: {
+        exclude: ['@fg-toolkit/lib-web-runtime']
     }
 });
