@@ -11,7 +11,7 @@ env.useBrowserCache = true;
 export interface ModelLoadOptions {
   modelId?: string;
   quantized?: boolean;
-  progressCallback?: (progress: number) => void;
+  progressCallback?: (progress: any) => void;
 }
 
 // Define a minimal interface for the pipeline to avoid 'any' if types are not fully available

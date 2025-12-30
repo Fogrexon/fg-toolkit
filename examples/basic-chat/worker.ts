@@ -1,4 +1,4 @@
-import { FunctionGemmaWeb, Message } from '@fg-toolkit/lib-web-runtime';
+import { FunctionGemmaWeb, Message, FunctionTool } from '@fg-toolkit/lib-web-runtime';
 
 // Define message types for type safety
 type WorkerMessage =
@@ -12,6 +12,31 @@ export type WorkerResponse =
     | { type: 'error', error: string };
 
 let runtime: FunctionGemmaWeb | null = null;
+
+// Demo tools
+const tools: FunctionTool[] = [
+    {
+        name: 'get_current_time',
+        description: 'Get the current time in a specific time zone',
+        parameters: {
+            type: 'object',
+            properties: {
+                timezone: {
+                    type: 'string',
+                    description: 'The time zone to get the time for (e.g., "UTC", "Asia/Tokyo", "America/New_York")',
+                },
+            },
+            required: ['timezone'],
+        },
+        implementation: ({ timezone }: { timezone: string }) => {
+            try {
+                return new Date().toLocaleString('en-US', { timeZone: timezone });
+            } catch (e) {
+                return `Invalid timezone: ${timezone}`;
+            }
+        }
+    }
+];
 
 self.onmessage = async (e: MessageEvent<WorkerMessage>) => {
     const { type } = e.data;
@@ -40,7 +65,7 @@ self.onmessage = async (e: MessageEvent<WorkerMessage>) => {
             if (!runtime) throw new Error('Runtime not initialized');
             const { messages } = e.data as any;
 
-            const response = await runtime.chat(messages, undefined, (token) => {
+            const response = await runtime.chat(messages, tools, (token) => {
                 self.postMessage({ type: 'token', token });
             });
 

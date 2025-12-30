@@ -23,6 +23,13 @@ export class FunctionGemmaWeb {
     }
 
     /**
+     * Initializes the library and loads the model.
+     */
+    async init(): Promise<void> {
+        await this.modelManager.load(this.config);
+    }
+
+    /**
      * Helper to map FunctionTool to the format expected by transformers.js
      */
     private mapFunctionToolToDefinition(tool: FunctionTool): TransformersToolDefinition {
