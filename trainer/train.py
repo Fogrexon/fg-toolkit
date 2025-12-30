@@ -12,6 +12,7 @@ from transformers import (
 from peft import LoraConfig, get_peft_model, prepare_model_for_kbit_training
 from trl import SFTConfig, SFTTrainer
 from transformers.utils import get_json_schema
+from optimum.exporters.onnx import main_export
 
 def parse_args():
     parser = argparse.ArgumentParser(description="Fine-tune FunctionGemma for tool calling.")
@@ -24,6 +25,7 @@ def parse_args():
     parser.add_argument("--max_length", type=int, default=512, help="Max sequence length.")
     parser.add_argument("--use_peft", action="store_true", help="Use LoRA for fine-tuning.")
     parser.add_argument("--load_in_4bit", action="store_true", help="Load model in 4-bit precision.")
+    parser.add_argument("--export_onnx", action="store_true", default=True, help="Export the model to ONNX format after training.")
     return parser.parse_args()
 
 def load_local_data(path):
@@ -134,10 +136,49 @@ def main():
     print("Starting training...")
     trainer.train()
     
-    print(f"Saving model to {args.output_dir}")
     trainer.save_model(args.output_dir)
     tokenizer.save_pretrained(args.output_dir)
     print("Training completed.")
+
+    if args.export_onnx:
+        print("Starting ONNX export...")
+        onnx_path = os.path.join(args.output_dir, "onnx")
+        
+        # If PEFT was used, we need to merge the weights before exporting
+        if args.use_peft:
+            print("Merging PEFT weights...")
+            # If loaded in 4bit, we need to reload the model in float16/bfloat16 to merge
+            if args.load_in_4bit:
+                print("Reloading model in float16 for merging (4-bit merging is not supported)...")
+                model = AutoModelForCausalLM.from_pretrained(
+                    args.model_id,
+                    torch_dtype=torch.float16,
+                    device_map="cpu",
+                )
+                from peft import PeftModel
+                model = PeftModel.from_pretrained(model, args.output_dir)
+                model = model.merge_and_unload()
+            else:
+                model = model.merge_and_unload()
+            
+            # Save the merged model temporarily or use it directly
+            merged_model_path = os.path.join(args.output_dir, "merged")
+            model.save_pretrained(merged_model_path)
+            tokenizer.save_pretrained(merged_model_path)
+            export_source = merged_model_path
+        else:
+            export_source = args.output_dir
+
+        try:
+            main_export(
+                export_source,
+                output=onnx_path,
+                task="causal-lm",
+                device="cpu", # Export on CPU is more stable
+            )
+            print(f"ONNX export completed. Saved to {onnx_path}")
+        except Exception as e:
+            print(f"ONNX export failed: {e}")
 
 if __name__ == "__main__":
     main()

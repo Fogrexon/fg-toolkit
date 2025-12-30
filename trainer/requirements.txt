@@ -13,3 +13,4 @@ sentencepiece
 protobuf
 tensorboard
 scipy
+optimum[onnxruntime]
