@@ -39,21 +39,22 @@ Wait for this command to finish completely before proceeding to the next step.
 Place your training data in a JSON file (e.g., `trainer/dataset.json`).
 
 > [!IMPORTANT]
-> **Hugging Face Authentication**: FunctionGemma is a **gated model**. You must accept the license on the [Hugging Face model page](https://huggingface.co/google/functiongemma-270m-it) and pass your [HF Token](https://huggingface.co/settings/tokens) using the `HF_TOKEN` environment variable.
+> **Hugging Face Authentication Required**  
+> FunctionGemma is a gated model. To download it, you must:
+> 1. Accept the license at [Hugging Face: FunctionGemma-270m-it](https://huggingface.co/google/functiongemma-270m-it).
+> 2. Pass your [Access Token](https://huggingface.co/settings/tokens) (read or write) to the container using `-e HF_TOKEN="your_token"`.
 
-Run the container by mounting your local directories:
-
-```bash
-# Windows (PowerShell)
+```powershell
+# Windows (PowerShell) - Replace your_token_here
 docker run --rm `
-  -e HF_TOKEN="your_huggingface_token_here" `
+  -e HF_TOKEN="your_token_here" `
   -v ${PWD}/trainer/dataset.json:/app/data/train.json `
   -v ${PWD}/trainer/output:/app/output `
   fg-trainer --dataset_path /app/data/train.json --output_dir /app/output
 
 # Linux/macOS
 docker run --rm \
-  -e HF_TOKEN="your_huggingface_token_here" \
+  -e HF_TOKEN="your_token_here" \
   -v $(pwd)/trainer/dataset.json:/app/data/train.json \
   -v $(pwd)/trainer/output:/app/output \
   fg-trainer --dataset_path /app/data/train.json --output_dir /app/output
