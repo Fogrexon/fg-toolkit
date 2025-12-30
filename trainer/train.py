@@ -26,6 +26,7 @@ def parse_args():
     parser.add_argument("--use_peft", action="store_true", help="Use LoRA for fine-tuning.")
     parser.add_argument("--load_in_4bit", action="store_true", help="Load model in 4-bit precision.")
     parser.add_argument("--export_onnx", action="store_true", default=True, help="Export the model to ONNX format after training.")
+    parser.add_argument("--token", type=str, default=os.environ.get("HF_TOKEN"), help="Hugging Face token for gated models.")
     return parser.parse_args()
 
 def load_local_data(path):
@@ -53,8 +54,9 @@ def main():
         device_map="auto",
         torch_dtype="auto",
         attn_implementation="eager", # Use flash_attention_2 if available
+        token=args.token,
     )
-    tokenizer = AutoTokenizer.from_pretrained(args.model_id)
+    tokenizer = AutoTokenizer.from_pretrained(args.model_id, token=args.token)
     
     # Ensure pad token is set
     if tokenizer.pad_token is None:
@@ -168,9 +170,10 @@ def main():
                     args.model_id,
                     torch_dtype=torch.float16,
                     device_map="cpu",
+                    token=args.token,
                 )
                 from peft import PeftModel
-                model = PeftModel.from_pretrained(model, args.output_dir)
+                model = PeftModel.from_pretrained(model, args.output_dir, token=args.token)
                 model = model.merge_and_unload()
             else:
                 model = model.merge_and_unload()
