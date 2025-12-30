@@ -1,4 +1,5 @@
-import { pipeline, env, TextStreamer } from '@huggingface/transformers';
+import { pipeline, env, TextStreamer, PreTrainedTokenizer } from '@huggingface/transformers';
+import { Message, TransformersToolDefinition } from '../types';
 
 // Skip local checks for browser environment compatibility
 env.allowLocalModels = false;
@@ -10,14 +11,20 @@ env.useBrowserCache = true;
 export interface ModelLoadOptions {
   modelId?: string;
   quantized?: boolean;
-  progressCallback?: (progress: number) => void;
+  progressCallback?: (progress: any) => void;
+}
+
+// Define a minimal interface for the pipeline to avoid 'any' if types are not fully available
+interface TextGenerationPipeline {
+  tokenizer: PreTrainedTokenizer;
+  (input: any, options?: any): Promise<any>;
 }
 
 /**
  * Manages the loading and inference of the FunctionGemma model.
  */
 export class ModelManager {
-  private pipe: any = null;
+  private pipe: TextGenerationPipeline | null = null;
   private modelId: string = 'onnx-community/functiongemma-270m-it-ONNX'; // Default model
 
   /**
@@ -38,20 +45,28 @@ export class ModelManager {
     this.pipe = await pipeline('text-generation', this.modelId, {
       progress_callback: options.progressCallback,
       dtype: options.quantized ? 'q4' : 'fp32',
-    } as any);
+    }) as unknown as TextGenerationPipeline;
   }
 
   /**
-   * Generates text based on the provided prompt.
-   * @param input The input prompt or messages
+   * Generates text based on the provided messages.
+   * @param messages Conversation history
+   * @param tools Optional list of tools to include in the prompt
    * @param maxNewTokens Maximum new tokens to generate
    * @param onUpdate Optional callback for streaming updates
    * @returns The generated text
    */
-  async generate(input: string | any[], maxNewTokens: number = 128, onUpdate?: (token: string) => void): Promise<string> {
+  async generate(messages: Message[], tools?: TransformersToolDefinition[], maxNewTokens: number = 128, onUpdate?: (token: string) => void): Promise<string> {
     if (!this.pipe) {
       throw new Error('Model not loaded. Call load() first.');
     }
+
+    // Use the tokenizer's chat template
+    const prompt = this.pipe.tokenizer.apply_chat_template(messages, {
+      tools: tools,
+      tokenize: false,
+      add_generation_prompt: true
+    }) as string;
 
     const streamer = onUpdate ? new TextStreamer(this.pipe.tokenizer, {
       skip_prompt: true,
@@ -59,7 +74,7 @@ export class ModelManager {
       callback_function: onUpdate,
     }) : undefined;
 
-    const output = await this.pipe(input, {
+    const output = await this.pipe(prompt, {
       max_new_tokens: maxNewTokens,
       do_sample: false,
       return_full_text: false,
