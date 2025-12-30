@@ -13,7 +13,6 @@ from peft import LoraConfig, get_peft_model, prepare_model_for_kbit_training
 from trl import SFTConfig, SFTTrainer
 from transformers.utils import get_json_schema
 from optimum.exporters.onnx import main_export
-from huggingface_hub import login
 
 def parse_args():
     parser = argparse.ArgumentParser(description="Fine-tune FunctionGemma for tool calling.")
@@ -38,12 +37,6 @@ def load_local_data(path):
 def main():
     args = parse_args()
     logging.set_verbosity_info()
-    
-    if args.token:
-        print("Logging into Hugging Face...")
-        login(token=args.token)
-    else:
-        print("No Hugging Face token provided. Access to gated models may fail.")
 
     # Load Model and Tokenizer
     bnb_config = None

@@ -35,14 +35,8 @@ docker build -t fg-trainer ./trainer
 ```
 Wait for this command to finish completely before proceeding to the next step.
 
-#### Step 2: Run Training
-Place your training data in a JSON file (e.g., `trainer/dataset.json`).
-
-> [!IMPORTANT]
-> **Hugging Face Authentication Required**  
-> FunctionGemma is a gated model. To download it, you must:
-> 1. Accept the license at [Hugging Face: FunctionGemma-270m-it](https://huggingface.co/google/functiongemma-270m-it).
-> 2. Pass your [Access Token](https://huggingface.co/settings/tokens) (read or write) to the container using `-e HF_TOKEN="your_token"`.
+#### Pattern 1: Online (using Hugging Face Token)
+Use this if you want the container to download the model from Hugging Face. FunctionGemma is a **gated model**, so you must accept the license on the [model page](https://huggingface.co/google/functiongemma-270m-it) and provide your [Access Token](https://huggingface.co/settings/tokens).
 
 ```powershell
 # Windows (PowerShell) - Replace your_token_here
@@ -51,13 +45,18 @@ docker run --rm `
   -v ${PWD}/trainer/dataset.json:/app/data/train.json `
   -v ${PWD}/trainer/output:/app/output `
   fg-trainer --dataset_path /app/data/train.json --output_dir /app/output
+```
 
-# Linux/macOS
-docker run --rm \
-  -e HF_TOKEN="your_token_here" \
-  -v $(pwd)/trainer/dataset.json:/app/data/train.json \
-  -v $(pwd)/trainer/output:/app/output \
-  fg-trainer --dataset_path /app/data/train.json --output_dir /app/output
+#### Pattern 2: Offline (using Local Model Path)
+Use this if you have already downloaded the model weights to your machine. Mount your local model folder to `/app/base_model` inside the container.
+
+```powershell
+# Windows (PowerShell) - Mount your local model to /app/base_model
+docker run --rm `
+  -v "C:/path/to/your/functiongemma-270m-it:/app/base_model" `
+  -v ${PWD}/trainer/dataset.json:/app/data/train.json `
+  -v ${PWD}/trainer/output:/app/output `
+  fg-trainer --model_id /app/base_model --dataset_path /app/data/train.json --output_dir /app/output
 ```
 
 #### Results
