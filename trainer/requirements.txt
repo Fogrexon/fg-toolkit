@@ -8,3 +8,8 @@ datasets
 accelerate
 onnx
 onnxruntime
+trl
+sentencepiece
+protobuf
+tensorboard
+scipy
