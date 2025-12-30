@@ -97,11 +97,25 @@ def main():
     DEFAULT_SYSTEM_MSG = "You are a model that can do function calling with the following functions"
 
     def create_conversation(sample):
+        assistant_msg = {"role": "assistant"}
+        if sample.get("tool_name"):
+            assistant_msg["tool_calls"] = [
+                {
+                    "type": "function",
+                    "function": {
+                        "name": sample["tool_name"],
+                        "arguments": json.loads(sample["tool_arguments"])
+                    }
+                }
+            ]
+        else:
+            assistant_msg["content"] = sample.get("assistant_content", "I am not sure how to help with that.")
+
         return {
             "messages": [
                 {"role": "developer", "content": DEFAULT_SYSTEM_MSG},
                 {"role": "user", "content": sample["user_content"]},
-                {"role": "assistant", "tool_calls": [{"type": "function", "function": {"name": sample["tool_name"], "arguments": json.loads(sample["tool_arguments"])}}]},
+                assistant_msg,
             ],
             "tools": TOOLS
         }

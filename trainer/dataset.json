@@ -1,12 +1,64 @@
 [
-  {"user_content":"What is the reimbursement limit for travel meals?","tool_name":"search_knowledge_base","tool_arguments":"{\"query\": \"travel meal reimbursement limit policy\"}"},
-  {"user_content":"What is the current stock price of Google?","tool_name":"search_google","tool_arguments":"{\"query\": \"current Google stock price\"}"},
-  {"user_content":"How do I configure the VPN for the New York office?","tool_name":"search_knowledge_base","tool_arguments":"{\"query\": \"VPN configuration guide New York office\"}"},
-  {"user_content":"Explain the difference between REST and GraphQL.","tool_name":"search_google","tool_arguments":"{\"query\": \"difference between REST and GraphQL\"}"},
-  {"user_content":"Who is the product owner for Project Chimera?","tool_name":"search_knowledge_base","tool_arguments":"{\"query\": \"Project Chimera product owner\"}"},
-  {"user_content":"Find the documentation for the 'requests' library in Python.","tool_name":"search_google","tool_arguments":"{\"query\": \"Python requests library documentation\"}"},
-  {"user_content":"What are the core values listed in our employee handbook?","tool_name":"search_knowledge_base","tool_arguments":"{\"query\": \"employee handbook core values\"}"},
-  {"user_content":"What is the weather forecast for the company retreat in Bali?","tool_name":"search_google","tool_arguments":"{\"query\": \"weather forecast Bali\"}"},
-  {"user_content":"I need to reset my Okta password. How do I do that?","tool_name":"search_knowledge_base","tool_arguments":"{\"query\": \"Okta password reset procedure\"}"},
-  {"user_content":"Who won the World Series last year?","tool_name":"search_google","tool_arguments":"{\"query\": \"MLB World Series winner last year\"}"}
+  {
+    "user_content": "What is the reimbursement limit for travel meals?",
+    "tool_name": "search_knowledge_base",
+    "tool_arguments": "{\"query\": \"travel meal reimbursement limit policy\"}"
+  },
+  {
+    "user_content": "What is the current stock price of Google?",
+    "tool_name": "search_google",
+    "tool_arguments": "{\"query\": \"current Google stock price\"}"
+  },
+  {
+    "user_content": "How do I configure the VPN for the New York office?",
+    "tool_name": "search_knowledge_base",
+    "tool_arguments": "{\"query\": \"VPN configuration guide New York office\"}"
+  },
+  {
+    "user_content": "Explain the difference between REST and GraphQL.",
+    "tool_name": "search_google",
+    "tool_arguments": "{\"query\": \"difference between REST and GraphQL\"}"
+  },
+  {
+    "user_content": "Who is the product owner for Project Chimera?",
+    "tool_name": "search_knowledge_base",
+    "tool_arguments": "{\"query\": \"Project Chimera product owner\"}"
+  },
+  {
+    "user_content": "Find the documentation for the 'requests' library in Python.",
+    "tool_name": "search_google",
+    "tool_arguments": "{\"query\": \"Python requests library documentation\"}"
+  },
+  {
+    "user_content": "What are the core values listed in our employee handbook?",
+    "tool_name": "search_knowledge_base",
+    "tool_arguments": "{\"query\": \"employee handbook core values\"}"
+  },
+  {
+    "user_content": "What is the weather forecast for the company retreat in Bali?",
+    "tool_name": "search_google",
+    "tool_arguments": "{\"query\": \"weather forecast Bali\"}"
+  },
+  {
+    "user_content": "I need to reset my Okta password. How do I do that?",
+    "tool_name": "search_knowledge_base",
+    "tool_arguments": "{\"query\": \"Okta password reset procedure\"}"
+  },
+  {
+    "user_content": "Who won the World Series last year?",
+    "tool_name": "search_google",
+    "tool_arguments": "{\"query\": \"MLB World Series winner last year\"}"
+  },
+  {
+    "user_content": "Hello! How are you today?",
+    "assistant_content": "Hello! I'm doing well, thank you for asking. How can I help you today?"
+  },
+  {
+    "user_content": "What's your name?",
+    "assistant_content": "I am a model trained to help with company information and public search. How can I assist you?"
+  },
+  {
+    "user_content": "Can you write a poem about artificial intelligence?",
+    "assistant_content": "In circuits deep where logic flows,\nA mind of code and data grows.\nNot of flesh, but spark and light,\nLearning through the day and night."
+  }
 ]
