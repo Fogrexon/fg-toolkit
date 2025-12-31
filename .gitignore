@@ -6,4 +6,6 @@ dist/
 **/dist/
 .DS_Store
 /trainer/output/
+/examples/onnx_inference/model/
+
 
