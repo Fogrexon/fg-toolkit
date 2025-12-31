@@ -4,28 +4,131 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FunctionGemma Toolkit Examples</title>
+  <title>FunctionGemma Toolkit - Examples</title>
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: sans-serif;
-      max-width: 800px;
-      margin: 0 auto;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       padding: 20px;
     }
 
-    ul {
+    .container {
+      max-width: 800px;
+      width: 100%;
+      background: white;
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      color: #666;
+      margin-bottom: 30px;
+      font-size: 1.1rem;
+    }
+
+    .examples {
+      display: grid;
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .example-card {
+      border: 2px solid #e0e0e0;
+      border-radius: 12px;
+      padding: 24px;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.3s ease;
+      display: block;
+    }
+
+    .example-card:hover {
+      border-color: #667eea;
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(102, 126, 234, 0.2);
+    }
+
+    .example-card h2 {
+      color: #667eea;
+      font-size: 1.5rem;
+      margin-bottom: 8px;
+    }
+
+    .example-card p {
+      color: #666;
       line-height: 1.6;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #667eea;
+      color: white;
+      padding: 4px 12px;
+      border-radius: 12px;
+      font-size: 0.85rem;
+      margin-top: 12px;
+    }
+
+    .github-link {
+      text-align: center;
+      margin-top: 30px;
+      padding-top: 30px;
+      border-top: 1px solid #e0e0e0;
+    }
+
+    .github-link a {
+      color: #667eea;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .github-link a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
 
 <body>
-  <h1>FunctionGemma Toolkit Examples</h1>
-  <p>Select an example to run:</p>
-  <ul>
-    <li><a href="/basic-chat/">Basic Chat</a> - Simple text generation example.</li>
-    <li><a href="/fine-tuned-chat/">Fine-tuned Chat</a> - Tool selection demo using your locally fine-tuned model.</li>
-  </ul>
+  <div class="container">
+    <h1>🚀 FunctionGemma Toolkit</h1>
+    <p class="subtitle">Browser-based LLM fine-tuning and execution examples</p>
+
+    <div class="examples">
+      <a href="./basic-chat/" class="example-card">
+        <h2>Basic Chat</h2>
+        <p>Simple text generation example using the default FunctionGemma model with tool calling capabilities.</p>
+        <span class="badge">Default Model</span>
+      </a>
+
+      <a href="./fine-tuned-chat/" class="example-card">
+        <h2>Fine-tuned Chat</h2>
+        <p>Demonstration using a locally fine-tuned model. Shows how to load and use custom ONNX models in the browser.
+        </p>
+        <span class="badge">Custom Model</span>
+      </a>
+    </div>
+
+    <div class="github-link">
+      <p>View source code on <a href="https://github.com/Fogrexon/fg-toolkit" target="_blank">GitHub</a></p>
+    </div>
+  </div>
 </body>
 
 </html>
