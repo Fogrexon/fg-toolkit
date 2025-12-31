@@ -24,8 +24,8 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          cache: 'npm'
+          node-version: "20"
+          cache: "npm"
           cache-dependency-path: |
             packages/lib-web-runtime/package-lock.json
             examples/package-lock.json
@@ -41,6 +41,12 @@ jobs:
       - name: Install dependencies (examples)
         working-directory: examples
         run: npm ci
+
+      - name: Link library to examples
+        run: |
+          mkdir -p examples/node_modules/@fg-toolkit/lib-web-runtime
+          cp -r packages/lib-web-runtime/dist examples/node_modules/@fg-toolkit/lib-web-runtime/
+          cp packages/lib-web-runtime/package.json examples/node_modules/@fg-toolkit/lib-web-runtime/
 
       - name: Build examples
         working-directory: examples
