@@ -33,7 +33,7 @@ worker.onmessage = (e) => {
                     currentModelMsgDiv.textContent = "";
                 }
                 currentFullResponse += data.token;
-                
+
                 // Simplified display: just show the raw response
                 // In a production app you'd parse markdown or extract tool calls
                 currentModelMsgDiv.textContent = currentFullResponse;
@@ -67,9 +67,9 @@ async function init() {
     worker.postMessage({
         type: 'init',
         config: {
-            // Point to the local model folder
-            modelId: '/fine-tuned-chat/model/',
-            quantized: false // Fine-tuning was likely exported as fp32 or already quantized in ONNX, but we use the exported path
+            // Point to the public model folder
+            modelId: '/model/',
+            quantized: false
         }
     });
 }

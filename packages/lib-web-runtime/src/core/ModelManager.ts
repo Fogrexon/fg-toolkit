@@ -4,6 +4,7 @@ import { Message, TransformersToolDefinition } from '../types';
 // Skip local checks for browser environment compatibility
 env.allowLocalModels = false;
 env.useBrowserCache = true;
+env.allowRemoteModels = true; // Default
 
 /**
  * Configuration options for model loading
@@ -39,6 +40,14 @@ export class ModelManager {
     if (options.modelId) {
       this.modelId = options.modelId;
     }
+
+    // If it looks like a local path, disable remote fetching to avoid "invalid model ID" errors from HF Hub
+    if (this.modelId.startsWith('/') || this.modelId.startsWith('./')) {
+      env.allowRemoteModels = false;
+      console.log('Detected local model path, disabling remote HF Hub access');
+    }
+
+    console.log(`Pipeline loading with modelId: ${this.modelId}`);
 
     // TODO: Ideally we should use a specific FunctionGemma ONNX model here when available
     // For now we use a placeholder or a text-generation pipeline.

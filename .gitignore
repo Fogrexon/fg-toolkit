@@ -6,4 +6,4 @@ dist/
 **/dist/
 .DS_Store
 /trainer/output/
-/examples/fine-tuned-chat/model/
+/examples/public/model/
