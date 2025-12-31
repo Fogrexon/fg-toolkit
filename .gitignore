@@ -7,3 +7,4 @@ dist/
 .DS_Store
 /trainer/output/
 /examples/public/model/
+task.md
