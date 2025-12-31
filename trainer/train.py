@@ -89,10 +89,20 @@ def main():
 
     # Tool definitions (Dummy functions to generate schema)
     def search_knowledge_base(query: str) -> str:
-        """Search internal company documents, policies and project data."""
+        """
+        Search internal company documents, policies and project data.
+
+        Args:
+            query: The search query string.
+        """
         return "Internal Result"
     def search_google(query: str) -> str:
-        """Search public information."""
+        """
+        Search public information.
+
+        Args:
+            query: The search query string.
+        """
         return "Public Result"
 
     TOOLS = [get_json_schema(search_knowledge_base), get_json_schema(search_google)]
