@@ -29,6 +29,7 @@
 - [ ] Clean up training logs and fix warnings (#13)
 - [ ] Organize demo app design and code style (#14)
 - [ ] Prepare and distribute training datasets with proper licensing (#15)
+- [ ] Document training parameters and dataset format (#16)
 - [ ] Create an 'Inventory Management' end-to-end demo.
 - [ ] Create an 'NPC Dialogue' demo.
 - [ ] Complete technical documentation in docs/.
