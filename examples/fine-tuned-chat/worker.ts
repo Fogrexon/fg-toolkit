@@ -81,6 +81,23 @@ self.onmessage = async (e: MessageEvent<WorkerMessage>) => {
       self.postMessage({ type: 'result', content: response });
     }
   } catch (err: any) {
-    self.postMessage({ type: 'error', error: err.toString() });
+    console.error('[Worker Error]', err);
+    let errorMessage = 'An unknown error occurred';
+
+    if (typeof err === 'string') {
+      errorMessage = err;
+    } else if (err instanceof Error) {
+      errorMessage = `${err.name}: ${err.message}\n${err.stack}`;
+    } else if (typeof err === 'number') {
+      errorMessage = `Numerical error: ${err}. Possible WASM memory/allocation failure or model path issue.`;
+    } else {
+      try {
+        errorMessage = JSON.stringify(err);
+      } catch {
+        errorMessage = String(err);
+      }
+    }
+
+    self.postMessage({ type: 'error', error: errorMessage });
   }
 };

@@ -12,7 +12,8 @@ export default defineConfig({
         rollupOptions: {
             input: {
                 main: resolve(__dirname, 'index.html'),
-                basicChat: resolve(__dirname, 'basic-chat/index.html')
+                basicChat: resolve(__dirname, 'basic-chat/index.html'),
+                fineTunedChat: resolve(__dirname, 'fine-tuned-chat/index.html')
             }
         }
     },

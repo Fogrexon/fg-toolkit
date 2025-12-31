@@ -200,10 +200,11 @@ def main():
             main_export(
                 export_source,
                 output=onnx_path,
-                task="causal-lm",
+                task="text-generation",  # Changed from "causal-lm" to support KV cache for transformers.js
                 device="cpu", # Export on CPU is more stable
             )
             print(f"ONNX export completed. Saved to {onnx_path}")
+
         except Exception as e:
             print(f"ONNX export failed: {e}")
 

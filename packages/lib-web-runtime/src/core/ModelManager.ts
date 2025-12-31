@@ -1,17 +1,33 @@
 import { pipeline, env, TextStreamer, PreTrainedTokenizer } from '@huggingface/transformers';
 import { Message, TransformersToolDefinition } from '../types';
+import { FUNCTION_GEMMA_CHAT_TEMPLATE } from './templates';
 
-// Skip local checks for browser environment compatibility
+// In transformers.js v3 (browser), models are fetched via fetch(). 
+// env.allowLocalModels refers to the local file system (Node.js/Electron).
+// env.allowRemoteModels refers to fetching from HF Hub or a URL.
+// When using a local server (like Vite's public folder), transformers.js 
+// treats the URL as "remote" but within the browser environment.
 env.allowLocalModels = false;
+env.allowRemoteModels = true;
 env.useBrowserCache = true;
-env.allowRemoteModels = true; // Default
+
+// Tune ONNX Runtime environment for performance and stability
+if (env.backends?.onnx?.wasm) {
+  env.backends.onnx.wasm.numThreads = 1; // Single thread often more stable for very large models in workers
+  env.backends.onnx.wasm.proxy = false;     // We are likely already in a worker
+}
+
+// Specifically for local model serving, we can set the localModelPath 
+// if we use a specific directory, but usually absolute URLs are passed to pipeline().
 
 /**
  * Configuration options for model loading
  */
 export interface ModelLoadOptions {
-  modelId?: string;
+  /** Custom model path or URL. Must be a complete URL (e.g., 'http://localhost:5173/model' or 'https://example.com/models/my-model'). If not specified, uses the default FunctionGemma model from HuggingFace Hub. */
+  modelPath?: string;
   quantized?: boolean;
+  device?: 'wasm' | 'webgpu' | 'auto';
   progressCallback?: (progress: any) => void;
 }
 
@@ -37,24 +53,44 @@ export class ModelManager {
       return;
     }
 
-    if (options.modelId) {
-      this.modelId = options.modelId;
+    const resolvedModelPath = options.modelPath || this.modelId;
+
+    console.log(`[ModelManager] Loading model from: ${resolvedModelPath}`);
+    console.log(`[ModelManager] env.allowLocalModels: ${env.allowLocalModels}, env.allowRemoteModels: ${env.allowRemoteModels}`);
+    console.log(`[ModelManager] Requested dtype: ${options.quantized ? 'q4' : 'fp32'}`);
+
+    try {
+      this.pipe = await pipeline('text-generation', this.modelId, {
+        progress_callback: options.progressCallback,
+        dtype: options.quantized ? 'q4' : 'fp32',
+        device: options.device || 'wasm',
+      }) as unknown as TextGenerationPipeline;
+      console.log(`[ModelManager] Pipeline loaded successfully.`);
+
+      // Log model inputs/outputs if available (ONNX specific)
+      const model = (this.pipe as any).model;
+      if (model && model.session) {
+        console.log(`[ModelManager] ONNX Input Names:`, model.session.inputNames);
+        console.log(`[ModelManager] ONNX Output Names:`, model.session.outputNames);
+      } else if (model && model.model && model.model.session) {
+        // Some versions wrap it
+        console.log(`[ModelManager] ONNX Input Names:`, model.model.session.inputNames);
+        console.log(`[ModelManager] ONNX Output Names:`, model.model.session.outputNames);
+      }
+    } catch (error: any) {
+      console.error(`[ModelManager] Failed to load pipeline:`, error);
+
+      let extraMessage = "";
+      if (typeof error === 'number' || (error && error.message && error.message.includes('out of memory'))) {
+        extraMessage = "\n\nCRITICAL: This often indicates a WASM memory limit or large file allocation failure. " +
+          "For models > 1GB, please use a quantized version (e.g., Q4) or try WebGPU if available.";
+      }
+
+      if (typeof error === 'number') {
+        throw new Error(`Model loading failed with numeric code: ${error}.${extraMessage}`);
+      }
+      throw new Error(`${error.message || error}${extraMessage}`);
     }
-
-    // If it looks like a local path, disable remote fetching to avoid "invalid model ID" errors from HF Hub
-    if (this.modelId.startsWith('/') || this.modelId.startsWith('./')) {
-      env.allowRemoteModels = false;
-      console.log('Detected local model path, disabling remote HF Hub access');
-    }
-
-    console.log(`Pipeline loading with modelId: ${this.modelId}`);
-
-    // TODO: Ideally we should use a specific FunctionGemma ONNX model here when available
-    // For now we use a placeholder or a text-generation pipeline.
-    this.pipe = await pipeline('text-generation', this.modelId, {
-      progress_callback: options.progressCallback,
-      dtype: options.quantized ? 'q4' : 'fp32',
-    }) as unknown as TextGenerationPipeline;
   }
 
   /**
@@ -70,12 +106,18 @@ export class ModelManager {
       throw new Error('Model not loaded. Call load() first.');
     }
 
-    // Use the tokenizer's chat template
+    // Use the tokenizer's chat template, or fallback if not set
+    const chatTemplate = this.pipe.tokenizer.chat_template || FUNCTION_GEMMA_CHAT_TEMPLATE;
+
+    // Generate the prompt string
     const prompt = this.pipe.tokenizer.apply_chat_template(messages, {
       tools: tools,
       tokenize: false,
-      add_generation_prompt: true
+      add_generation_prompt: true,
+      chat_template: chatTemplate
     }) as string;
+
+    console.log(`[ModelManager] Generated prompt length: ${prompt?.length}`);
 
     const streamer = onUpdate ? new TextStreamer(this.pipe.tokenizer, {
       skip_prompt: true,
@@ -83,11 +125,14 @@ export class ModelManager {
       callback_function: onUpdate,
     }) : undefined;
 
+    // Pass the prompt string directly to the pipeline. 
+    // Transformers.js will handle tokenization and input tensor creation (including attention_mask/position_ids).
     const output = await this.pipe(prompt, {
       max_new_tokens: maxNewTokens,
       do_sample: false,
       return_full_text: false,
       streamer,
+      use_cache: true,
     });
 
     // When using chat input (array), the output is typically the last generated message object or text depending on version

@@ -67,9 +67,10 @@ async function init() {
     worker.postMessage({
         type: 'init',
         config: {
-            // Point to the public model folder
-            modelId: '/model/',
-            quantized: false
+            // Point to the public model folder (must be complete URL)
+            modelPath: 'http://localhost:5173/model',
+            quantized: false,
+            device: 'webgpu' // Use WebGPU for better memory handling and speed
         }
     });
 }
@@ -109,8 +110,10 @@ async function handleSend() {
     try {
         const response = await chatWithWorker(messages);
         messages.push({ role: 'model', content: response });
-    } catch (err) {
+    } catch (err: any) {
         console.error(err);
+        statusEl.textContent = 'Error during generation. Check console.';
+        appendMessage('model', 'Sorry, I encountered an error. Please check if the model is too large for your browser.');
     }
 }
 

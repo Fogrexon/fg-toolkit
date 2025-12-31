@@ -18,6 +18,14 @@
 - [x] Create high-level API for function calling from client logic.
 - [x] Configure NPM distribution and documentation.
 - [x] Create a 'Basic Chat' demo (Baseline implementation).
+- [x] Debug the numerical error 1754897320 in fine-tuned-chat.
+    - [x] Improve error reporting in worker and ModelManager.
+    - [x] Correctly configure transformers.js env for local models.
+    - [x] Enable WebGPU by default for large model stability.
+    - [x] Implement fallback chat template for FunctionGemma.
+    - [x] Fix ONNX export task from 'causal-lm' to 'text-generation'.
+    - [x] Simplify model loading API (modelPath only).
+    - [x] Verify generation works with re-exported model.
 - [ ] Create an 'Inventory Management' end-to-end demo.
 - [ ] Create an 'NPC Dialogue' demo.
 - [ ] Complete technical documentation in docs/.
