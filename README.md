@@ -22,9 +22,45 @@ FunctionGemma is an LLM designed for function calling and tool use. This toolkit
 - `examples/`: Sample projects and implementation guides.
 - `docs/`: Technical specifications and API documentation.
 
-## Getting Started
+## Usage
 
-*(Instructions for installation and usage will be added as the project evolves.)*
+### Training with Docker
+
+This environment is designed to be **built and run locally**. You do not need to pull images from Docker Hub.
+
+#### Step 1: Build the Image Locally
+You **must** build the image once before you can run it:
+```bash
+docker build -t fg-trainer ./trainer
+```
+Wait for this command to finish completely before proceeding to the next step.
+
+#### Pattern 1: Online (using Hugging Face Token)
+Use this if you want the container to download the model from Hugging Face. FunctionGemma is a **gated model**, so you must accept the license on the [model page](https://huggingface.co/google/functiongemma-270m-it) and provide your [Access Token](https://huggingface.co/settings/tokens).
+
+```powershell
+# Windows (PowerShell) - Replace your_token_here
+docker run --rm `
+  -e HF_TOKEN="your_token_here" `
+  -v ${PWD}/trainer/dataset.json:/app/data/train.json `
+  -v ${PWD}/trainer/output:/app/output `
+  fg-trainer --dataset_path /app/data/train.json --output_dir /app/output
+```
+
+#### Pattern 2: Offline (using Local Model Path)
+Use this if you have already downloaded the model weights to your machine. Mount your local model folder to `/app/base_model` inside the container.
+
+```powershell
+# Windows (PowerShell) - Mount your local model to /app/base_model
+docker run --rm `
+  -v "C:/path/to/your/functiongemma-270m-it:/app/base_model" `
+  -v ${PWD}/trainer/dataset.json:/app/data/train.json `
+  -v ${PWD}/trainer/output:/app/output `
+  fg-trainer --model_id /app/base_model --dataset_path /app/data/train.json --output_dir /app/output
+```
+
+#### Results
+The fine-tuned model and its **ONNX version** will be saved in your local `trainer/output` folder.
 
 ## License
 

@@ -8,3 +8,9 @@ datasets
 accelerate
 onnx
 onnxruntime
+trl>=0.13.0
+sentencepiece
+protobuf
+tensorboard
+scipy
+optimum[onnxruntime]
