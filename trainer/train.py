@@ -52,7 +52,7 @@ def main():
         args.model_id,
         quantization_config=bnb_config,
         device_map="auto",
-        torch_dtype="auto",
+        dtype="auto",
         attn_implementation="eager", # Use flash_attention_2 if available
         token=args.token,
     )
@@ -137,7 +137,7 @@ def main():
     # SFT Training Config
     sft_config = SFTConfig(
         output_dir=args.output_dir,
-        max_seq_length=args.max_length,
+        max_length=args.max_length,
         packing=False,
         num_train_epochs=args.epochs,
         per_device_train_batch_size=args.batch_size,
@@ -146,7 +146,7 @@ def main():
         optim="adamw_torch_fused" if torch.cuda.is_available() else "adamw_torch",
         logging_steps=10,
         save_strategy="epoch",
-        evaluation_strategy="no",
+        eval_strategy="no",  # Note: notebook uses 'epoch', but keeping 'no' for speed unless requested
         fp16=not torch.cuda.is_bf16_supported() if torch.cuda.is_available() else False,
         bf16=torch.cuda.is_bf16_supported() if torch.cuda.is_available() else False,
         report_to="tensorboard",
