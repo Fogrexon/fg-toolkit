@@ -36,6 +36,6 @@ FunctionGemma Toolkit is designed to bridge the gap between LLM fine-tuning and 
 ## AI Agent Instructions
 
 When working in this repository:
-- Always check `GEMINI.md` (this file) and `task.md` (in the workspace) before starting a new task.
+- Always check `GEMINI.md` (this file) before starting a new task.
 - Follow the GitHub CLI process for issues and PRs.
-    - `packages/lib-web-runtime` (Library)
+- **`task.md` is for per-PR task tracking only**: Create a `task.md` file in the workspace to track implementation tasks within a single PR. This file should NOT be committed to the repository (it's in `.gitignore`). Use GitHub Issues for overall project task management.
