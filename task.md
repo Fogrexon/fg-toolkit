@@ -26,6 +26,9 @@
     - [x] Fix ONNX export task from 'causal-lm' to 'text-generation'.
     - [x] Simplify model loading API (modelPath only).
     - [x] Verify generation works with re-exported model.
+- [ ] Clean up training logs and fix warnings (#13)
+- [ ] Organize demo app design and code style (#14)
+- [ ] Prepare and distribute training datasets with proper licensing (#15)
 - [ ] Create an 'Inventory Management' end-to-end demo.
 - [ ] Create an 'NPC Dialogue' demo.
 - [ ] Complete technical documentation in docs/.
