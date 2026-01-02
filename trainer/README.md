@@ -131,6 +131,38 @@ To disable this behavior, pass `--export_onnx=False` (Note: `argparse` boolean f
 `parser.add_argument("--export_onnx", action="store_true", default=True, help="...")`
 Guidance: This `argparse` definition is slightly ambiguous (usually `store_true` implies default False). However, if you want to *disable* it, you might need to modify the code or just rely on the default. Since it defaults to True, just running it exports. The script doesn't seem to have a `--no-export_onnx` flag.
 
+## Chatting with the Model
+
+You can interactively chat with your fine-tuned model using the `chat.py` script. This is useful for quick verification.
+
+### Basic Usage
+
+```bash
+python chat.py --adapter_path ./output --token YOUR_TOKEN
+```
+
+### Arguments
+
+| Argument | Description |
+| :--- | :--- |
+| `--base_model_id` | Base model ID (default: `google/functiongemma-270m-it`). |
+| `--adapter_path` | Path to the directory containing the trained LoRA adapter (e.g., `./output`). |
+| `--load_in_4bit` | Load in 4-bit precision (recommended for consumer GPUs). |
+| `--token` | Hugging Face token. |
+
+### Docker Usage for Chat
+
+To run the chat script inside the Docker container, use `--entrypoint python`:
+
+```bash
+docker run --rm -it \
+  --entrypoint python \
+  -v $(pwd)/model_output:/app/output \
+  -e HF_TOKEN=$HF_TOKEN \
+  fg-trainer \
+  chat.py --adapter_path /app/output --load_in_4bit
+```
+
 ## Troubleshooting
 
 - **Out of Memory (OOM)**: Try reducing `--batch_size` (e.g., to 1) or enabling `--load_in_4bit`.
