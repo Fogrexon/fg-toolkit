@@ -6,7 +6,7 @@ from optimum.onnxruntime import ORTModelForCausalLM
 
 def parse_args():
     parser = argparse.ArgumentParser(description="Chat with a fine-tuned FunctionGemma model.")
-    parser.add_argument("--model_path", type=str, required=True, help="Path to the fine-tuned model directory (e.g., ./output).")
+    parser.add_argument("--model_path", type=str, default="./output", help="Path to the fine-tuned model directory (default: ./output).")
     parser.add_argument("--use_onnx", action="store_true", help="Use ONNX Runtime for inference (expects model in model_path/onnx).")
     return parser.parse_args()
 

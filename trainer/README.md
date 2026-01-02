@@ -118,18 +118,18 @@ You can interactively chat with your fine-tuned model using the `chat.py` script
 ### Basic Usage
 
 ```bash
-# PyTorch (Standard)
-python chat.py --model_path ./output
+# PyTorch (Standard) - defaults to ./output
+python chat.py
 
 # ONNX Runtime (Verify exported model)
-python chat.py --model_path ./output --use_onnx
+python chat.py --use_onnx
 ```
 
 ### Arguments
 
 | Argument | Description |
 | :--- | :--- |
-| `--model_path` | (Required) Path to the fine-tuned model directory (e.g., `./output`). |
+| `--model_path` | Path to the fine-tuned model directory. Defaults to `./output`. |
 | `--use_onnx` | Use ONNX Runtime for inference. Expects ONNX subfolder (e.g., `./output/onnx`). |
 
 ### Docker Usage for Chat
