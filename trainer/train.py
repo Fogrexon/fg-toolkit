@@ -116,12 +116,22 @@ def main():
     def create_conversation(sample):
         assistant_msg = {"role": "assistant"}
         if sample.get("tool_name"):
+            tool_args = sample.get("tool_arguments", "{}")
+            # Allow tool_arguments to be a dict or a JSON string
+            if isinstance(tool_args, str):
+                try:
+                    tool_args = json.loads(tool_args)
+                except json.JSONDecodeError:
+                     # Fallback or error logging could go here, but for now assuming valid input
+                     print(f"Warning: Failed to parse tool_arguments for sample: {sample}")
+                     tool_args = {}
+            
             assistant_msg["tool_calls"] = [
                 {
                     "type": "function",
                     "function": {
                         "name": sample["tool_name"],
-                        "arguments": json.loads(sample["tool_arguments"])
+                        "arguments": tool_args
                     }
                 }
             ]

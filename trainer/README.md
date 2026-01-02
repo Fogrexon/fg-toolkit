@@ -34,7 +34,7 @@ The trainer expects a JSON array of conversation objects. Each object represents
   {
     "user_content": "What is the weather in Tokyo?",
     "tool_name": "get_weather",
-    "tool_arguments": "{\"location\": \"Tokyo\"}"
+    "tool_arguments": {"location": "Tokyo"}
   },
   {
     "user_content": "Hello, how are you?",
@@ -47,7 +47,7 @@ The trainer expects a JSON array of conversation objects. Each object represents
 
 - `user_content`: The message from the user.
 - `tool_name` (optional): The name of the function tool the model should call.
-- `tool_arguments` (optional): A JSON string representing the arguments for the tool. **Must be a stringified JSON object.**
+- `tool_arguments` (optional): A JSON object (or stringified JSON) representing the arguments for the tool.
 - `assistant_content` (optional): The text response from the assistant (used when no tool call is needed).
 
 > [!IMPORTANT]
