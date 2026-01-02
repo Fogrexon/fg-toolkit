@@ -1,13 +1,11 @@
 import argparse
 import torch
 import os
-from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
-from peft import PeftModel
+from transformers import AutoTokenizer, AutoModelForCausalLM
 
 def parse_args():
     parser = argparse.ArgumentParser(description="Chat with a fine-tuned FunctionGemma model.")
-    parser.add_argument("--adapter_path", type=str, help="Path to the fine-tuned LoRA adapter (e.g., ./output).")
-    parser.add_argument("--load_in_4bit", action="store_true", help="Load model in 4-bit precision.")
+    parser.add_argument("--model_path", type=str, required=True, help="Path to the fine-tuned model directory (e.g., ./output).")
     parser.add_argument("--token", type=str, default=os.environ.get("HF_TOKEN"), help="Hugging Face token.")
     return parser.parse_args()
 
@@ -18,29 +16,15 @@ def main():
     if not args.token:
         raise ValueError("Hugging Face token is required. Please pass --token or set HF_TOKEN environment variable.")
 
-    # FunctionGemma Model ID
-    base_model_id = "google/functiongemma-270m-it"
-    print(f"Loading base model: {base_model_id}...")
+    print(f"Loading model from: {args.model_path}...")
     
-    bnb_config = None
-    if args.load_in_4bit:
-        bnb_config = BitsAndBytesConfig(
-            load_in_4bit=True,
-            bnb_4bit_quant_type="nf4",
-            bnb_4bit_compute_dtype=torch.bfloat16 if torch.cuda.is_bf16_supported() else torch.float16,
-        )
-
+    # Load the full model directly
     model = AutoModelForCausalLM.from_pretrained(
-        base_model_id,
-        quantization_config=bnb_config,
+        args.model_path,
         device_map="auto",
         token=args.token,
     )
-    tokenizer = AutoTokenizer.from_pretrained(base_model_id, token=args.token)
-
-    if args.adapter_path:
-        print(f"Loading adapter from: {args.adapter_path}...")
-        model = PeftModel.from_pretrained(model, args.adapter_path, token=args.token)
+    tokenizer = AutoTokenizer.from_pretrained(args.model_path, token=args.token)
 
     print("\n--- Model Loaded. Type 'exit' to quit. ---\n")
 

@@ -5,8 +5,7 @@ A simplified fine-tuning tool for FunctionGemma, designed to help you create cus
 ## Overview
 
 This directory contains a training script (`train.py`) and environment configuration for fine-tuning FunctionGemma models. It supports:
-- **LoRA / PEFT**: Efficient fine-tuning using Low-Rank Adaptation.
-- **Quantization**: 4-bit training for lower memory usage.
+- **Full Fine-Tuning**: Updates all model parameters for maximum performance (recommended for small models like FunctionGemma 270M).
 - **ONNX Export**: Automatic export of the fine-tuned model to ONNX format for web use (e.g., with `fg-toolkit-web`).
 - **Custom Datasets**: Easy-to-use JSON dataset format.
 
@@ -71,26 +70,13 @@ python train.py --dataset_path ./my_dataset.json
 | Argument | Default | Description |
 | :--- | :--- | :--- |
 | `--dataset_path` | (Required) | Path to your local JSON dataset. |
-| `--output_dir` | `./output` | Directory to save the trained model and logs. |
+| `--output_dir` | `./output` | Directory to save the fine-tuned model and logs. |
 | `--epochs` | `8` | Number of training epochs. |
 | `--batch_size` | `4` | Training batch size per device. |
 | `--learning_rate` | `5e-5` | Learning rate. |
-| `--use_peft` | `False` | Enable LoRA (PEFT) fine-tuning. |
-| `--load_in_4bit` | `False` | Load model in 4-bit precision (reduces VRAM). |
+| `--max_length` | `512` | Max sequence length. |
 | `--export_onnx` | `True` | Export to ONNX format after training. |
 | `--token` | (Required) | Hugging Face token for gated models (FunctionGemma). defaults to `HF_TOKEN` env var. |
-
-### Efficient Training (LoRA + 4-bit)
-
-For consumer GPUs, use PEFT and 4-bit quantization:
-
-```bash
-python train.py \
-  --dataset_path my_dataset.json \
-  --use_peft \
-  --load_in_4bit \
-  --batch_size 2
-```
 
 ## Docker Usage
 
@@ -124,11 +110,6 @@ Use Docker to run training in an isolated environment.
 By default, the trainer automatically exports the model to ONNX format at the end of training.
 
 - The ONNX model will be saved in `<output_dir>/onnx`.
-- If using PEFT/LoRA, the weights are automatically merged before export.
-
-To disable this behavior, pass `--export_onnx=False` (Note: `argparse` boolean flags might require `--no-export_onnx` depending on implementation, but currently the script defaults to True and acts as a flag. *Correction*: The script uses `action="store_true"` default `True`... wait, `action="store_true"` defaults to False usually, but the code says `default=True`. Actually `action="store_true"` means "if present, True". The code in `train.py` says:
-`parser.add_argument("--export_onnx", action="store_true", default=True, help="...")`
-Guidance: This `argparse` definition is slightly ambiguous (usually `store_true` implies default False). However, if you want to *disable* it, you might need to modify the code or just rely on the default. Since it defaults to True, just running it exports. The script doesn't seem to have a `--no-export_onnx` flag.
 
 ## Chatting with the Model
 
@@ -137,15 +118,14 @@ You can interactively chat with your fine-tuned model using the `chat.py` script
 ### Basic Usage
 
 ```bash
-python chat.py --adapter_path ./output --token YOUR_TOKEN
+python chat.py --model_path ./output --token YOUR_TOKEN
 ```
 
 ### Arguments
 
 | Argument | Description |
 | :--- | :--- |
-| `--adapter_path` | Path to the directory containing the trained LoRA adapter (e.g., `./output`). |
-| `--load_in_4bit` | Load in 4-bit precision (recommended for consumer GPUs). |
+| `--model_path` | (Required) Path to the fine-tuned model directory (e.g., `./output`). |
 | `--token` | Hugging Face token. |
 
 ### Docker Usage for Chat
@@ -158,10 +138,10 @@ docker run --rm -it \
   -v $(pwd)/model_output:/app/output \
   -e HF_TOKEN=$HF_TOKEN \
   fg-trainer \
-  chat.py --adapter_path /app/output --load_in_4bit
+  chat.py --model_path /app/output
 ```
 
 ## Troubleshooting
 
-- **Out of Memory (OOM)**: Try reducing `--batch_size` (e.g., to 1) or enabling `--load_in_4bit`.
+- **Out of Memory (OOM)**: Try reducing `--batch_size` (e.g., to 1).
 - **Missing Token**: If you see a `ValueError` or 401/403 error, ensure you have provided a valid Hugging Face token and that your account has accepted the license agreement for FunctionGemma.
