@@ -10,7 +10,7 @@ from transformers import (
 )
 from trl import SFTConfig, SFTTrainer
 from transformers.utils import get_json_schema
-from optimum.exporters.onnx import main_export
+from optimum.onnxruntime import ORTModelForCausalLM
 
 def parse_args():
     parser = argparse.ArgumentParser(description="Fine-tune FunctionGemma for tool calling (Full Fine-Tuning).")
@@ -162,12 +162,15 @@ def main():
         
         # We can export directly from the output directory since it contains the full model
         try:
-            main_export(
+            # Load and export with Optimum
+            # This ensures explicit support for KV cache and consistent config
+            ort_model = ORTModelForCausalLM.from_pretrained(
                 args.output_dir,
-                output=onnx_path,
-                task="causal-lm",
-                device="cpu", # Export on CPU is more stable
+                export=True,
+                use_cache=True, # Explicitly request KV cache support
+                use_io_binding=False, # Simpler for basic verification
             )
+            ort_model.save_pretrained(onnx_path)
             print(f"ONNX export completed. Saved to {onnx_path}")
         except Exception as e:
             print(f"ONNX export failed: {e}")
