@@ -6,7 +6,6 @@ from peft import PeftModel
 
 def parse_args():
     parser = argparse.ArgumentParser(description="Chat with a fine-tuned FunctionGemma model.")
-    parser.add_argument("--base_model_id", type=str, default="google/functiongemma-270m-it", help="Base model ID from Hugging Face.")
     parser.add_argument("--adapter_path", type=str, help="Path to the fine-tuned LoRA adapter (e.g., ./output).")
     parser.add_argument("--load_in_4bit", action="store_true", help="Load model in 4-bit precision.")
     parser.add_argument("--token", type=str, default=os.environ.get("HF_TOKEN"), help="Hugging Face token.")
@@ -19,7 +18,9 @@ def main():
     if not args.token:
         raise ValueError("Hugging Face token is required. Please pass --token or set HF_TOKEN environment variable.")
 
-    print(f"Loading base model: {args.base_model_id}...")
+    # FunctionGemma Model ID
+    base_model_id = "google/functiongemma-270m-it"
+    print(f"Loading base model: {base_model_id}...")
     
     bnb_config = None
     if args.load_in_4bit:
@@ -30,12 +31,12 @@ def main():
         )
 
     model = AutoModelForCausalLM.from_pretrained(
-        args.base_model_id,
+        base_model_id,
         quantization_config=bnb_config,
         device_map="auto",
         token=args.token,
     )
-    tokenizer = AutoTokenizer.from_pretrained(args.base_model_id, token=args.token)
+    tokenizer = AutoTokenizer.from_pretrained(base_model_id, token=args.token)
 
     if args.adapter_path:
         print(f"Loading adapter from: {args.adapter_path}...")

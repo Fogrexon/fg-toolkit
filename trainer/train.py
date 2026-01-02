@@ -16,7 +16,6 @@ from optimum.exporters.onnx import main_export
 
 def parse_args():
     parser = argparse.ArgumentParser(description="Fine-tune FunctionGemma for tool calling.")
-    parser.add_argument("--model_id", type=str, default="google/functiongemma-270m-it", help="Model ID from Hugging Face.")
     parser.add_argument("--dataset_path", type=str, help="Path to local training dataset (JSON).")
     parser.add_argument("--output_dir", type=str, default="./output", help="Directory to save the fine-tuned model.")
     parser.add_argument("--epochs", type=int, default=8, help="Number of training epochs.")
@@ -53,15 +52,18 @@ def main():
             bnb_4bit_use_double_quant=True,
         )
 
+    # FunctionGemma Model ID
+    model_id = "google/functiongemma-270m-it"
+
     model = AutoModelForCausalLM.from_pretrained(
-        args.model_id,
+        model_id,
         quantization_config=bnb_config,
         device_map="auto",
         dtype="auto",
         attn_implementation="eager", # Use flash_attention_2 if available
         token=args.token,
     )
-    tokenizer = AutoTokenizer.from_pretrained(args.model_id, token=args.token)
+    tokenizer = AutoTokenizer.from_pretrained(model_id, token=args.token)
     
     # Ensure pad token is set
     if tokenizer.pad_token is None:
@@ -192,7 +194,7 @@ def main():
             if args.load_in_4bit:
                 print("Reloading model in float16 for merging (4-bit merging is not supported)...")
                 model = AutoModelForCausalLM.from_pretrained(
-                    args.model_id,
+                    model_id,
                     torch_dtype=torch.float16,
                     device_map="cpu",
                     token=args.token,

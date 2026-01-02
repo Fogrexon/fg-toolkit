@@ -70,7 +70,6 @@ python train.py --dataset_path ./my_dataset.json
 
 | Argument | Default | Description |
 | :--- | :--- | :--- |
-| `--model_id` | `google/functiongemma-270m-it` | Hugging Face Model ID to use as the base. |
 | `--dataset_path` | (Required) | Path to your local JSON dataset. |
 | `--output_dir` | `./output` | Directory to save the trained model and logs. |
 | `--epochs` | `8` | Number of training epochs. |
@@ -145,7 +144,6 @@ python chat.py --adapter_path ./output --token YOUR_TOKEN
 
 | Argument | Description |
 | :--- | :--- |
-| `--base_model_id` | Base model ID (default: `google/functiongemma-270m-it`). |
 | `--adapter_path` | Path to the directory containing the trained LoRA adapter (e.g., `./output`). |
 | `--load_in_4bit` | Load in 4-bit precision (recommended for consumer GPUs). |
 | `--token` | Hugging Face token. |
