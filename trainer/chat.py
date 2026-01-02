@@ -14,9 +14,10 @@ def parse_args():
 def main():
     args = parse_args()
 
-    # Ensure HF Token is present
-    if not args.token:
-        raise ValueError("Hugging Face token is required. Please pass --token or set HF_TOKEN environment variable.")
+    # Token is optional for local fine-tuned models
+    if not args.token and not os.path.exists(args.model_path):
+         # If path doesn't exist, maybe it's a Hub ID? Then warn or let transformers handle it.
+         pass
 
     print(f"Loading model from: {args.model_path}...")
     
