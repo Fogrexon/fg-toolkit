@@ -8,16 +8,10 @@ def parse_args():
     parser = argparse.ArgumentParser(description="Chat with a fine-tuned FunctionGemma model.")
     parser.add_argument("--model_path", type=str, required=True, help="Path to the fine-tuned model directory (e.g., ./output).")
     parser.add_argument("--use_onnx", action="store_true", help="Use ONNX Runtime for inference (expects model in model_path/onnx).")
-    parser.add_argument("--token", type=str, default=os.environ.get("HF_TOKEN"), help="Hugging Face token.")
     return parser.parse_args()
 
 def main():
     args = parse_args()
-
-    # Token is optional for local fine-tuned models
-    if not args.token and not os.path.exists(args.model_path):
-         # If path doesn't exist, maybe it's a Hub ID? Then warn or let transformers handle it.
-         pass
 
     print(f"Loading model from: {args.model_path}...")
     
@@ -27,18 +21,16 @@ def main():
         model = ORTModelForCausalLM.from_pretrained(
             onnx_path,
             device_map="auto", # optimum handles device
-            token=args.token,
         )
         # Tokenizer is typically saved in the same ONNX dir or fallback to base
-        tokenizer = AutoTokenizer.from_pretrained(onnx_path, token=args.token)
+        tokenizer = AutoTokenizer.from_pretrained(onnx_path)
     else:
         # Load the full model directly
         model = AutoModelForCausalLM.from_pretrained(
             args.model_path,
             device_map="auto",
-            token=args.token,
         )
-        tokenizer = AutoTokenizer.from_pretrained(args.model_path, token=args.token)
+        tokenizer = AutoTokenizer.from_pretrained(args.model_path)
 
     print("\n--- Model Loaded. Type 'exit' to quit. ---\n")
 
