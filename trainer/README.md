@@ -65,6 +65,9 @@ python train.py --dataset_path ./my_dataset.json
 
 ### Arguments
 
+> [!IMPORTANT]
+> **FunctionGemma is a gated model.** You MUST provide a Hugging Face token with access to the model, either via the `--token` argument or the `HF_TOKEN` environment variable.
+
 | Argument | Default | Description |
 | :--- | :--- | :--- |
 | `--model_id` | `google/functiongemma-270m-it` | Hugging Face Model ID to use as the base. |
@@ -75,8 +78,8 @@ python train.py --dataset_path ./my_dataset.json
 | `--learning_rate` | `5e-5` | Learning rate. |
 | `--use_peft` | `False` | Enable LoRA (PEFT) fine-tuning. |
 | `--load_in_4bit` | `False` | Load model in 4-bit precision (reduces VRAM). |
-| `--export_onnx` | `True` | Export to ONNX after training. |
-| `--token` | `HF_TOKEN` env var | Hugging Face token (required for gated models). |
+| `--export_onnx` | `True` | Export to ONNX format after training. |
+| `--token` | (Required) | Hugging Face token for gated models (FunctionGemma). defaults to `HF_TOKEN` env var. |
 
 ### Efficient Training (LoRA + 4-bit)
 
@@ -131,4 +134,4 @@ Guidance: This `argparse` definition is slightly ambiguous (usually `store_true`
 ## Troubleshooting
 
 - **Out of Memory (OOM)**: Try reducing `--batch_size` (e.g., to 1) or enabling `--load_in_4bit`.
-- **Hugging Face Login**: If using a gated model like Gemma, ensure you provide your token via `--token` or set the `HF_TOKEN` environment variable.
+- **Missing Token**: If you see a `ValueError` or 401/403 error, ensure you have provided a valid Hugging Face token and that your account has accepted the license agreement for FunctionGemma.

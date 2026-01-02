@@ -38,6 +38,11 @@ def main():
     args = parse_args()
     logging.set_verbosity_info()
 
+    # Ensure HF Token is present (FunctionGemma is gated)
+    if not args.token:
+        raise ValueError("Hugging Face token is required for FunctionGemma (gated model). Please pass --token or set HF_TOKEN environment variable.")
+
+
     # Load Model and Tokenizer
     bnb_config = None
     if args.load_in_4bit:
