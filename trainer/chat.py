@@ -20,7 +20,6 @@ def main():
         print(f"Using ONNX Runtime. Loading from: {onnx_path}")
         model = ORTModelForCausalLM.from_pretrained(
             onnx_path,
-            device_map="auto", # optimum handles device
         )
         # Tokenizer is typically saved in the same ONNX dir or fallback to base
         tokenizer = AutoTokenizer.from_pretrained(onnx_path)
