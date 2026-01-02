@@ -118,7 +118,11 @@ You can interactively chat with your fine-tuned model using the `chat.py` script
 ### Basic Usage
 
 ```bash
+# PyTorch (Standard)
 python chat.py --model_path ./output --token YOUR_TOKEN
+
+# ONNX Runtime (Verify exported model)
+python chat.py --model_path ./output --use_onnx --token YOUR_TOKEN
 ```
 
 ### Arguments
@@ -126,6 +130,7 @@ python chat.py --model_path ./output --token YOUR_TOKEN
 | Argument | Description |
 | :--- | :--- |
 | `--model_path` | (Required) Path to the fine-tuned model directory (e.g., `./output`). |
+| `--use_onnx` | Use ONNX Runtime for inference. Expects ONNX subfolder (e.g., `./output/onnx`). |
 | `--token` | Hugging Face token. |
 
 ### Docker Usage for Chat

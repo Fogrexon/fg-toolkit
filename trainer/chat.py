@@ -2,10 +2,12 @@ import argparse
 import torch
 import os
 from transformers import AutoTokenizer, AutoModelForCausalLM
+from optimum.onnxruntime import ORTModelForCausalLM
 
 def parse_args():
     parser = argparse.ArgumentParser(description="Chat with a fine-tuned FunctionGemma model.")
     parser.add_argument("--model_path", type=str, required=True, help="Path to the fine-tuned model directory (e.g., ./output).")
+    parser.add_argument("--use_onnx", action="store_true", help="Use ONNX Runtime for inference (expects model in model_path/onnx).")
     parser.add_argument("--token", type=str, default=os.environ.get("HF_TOKEN"), help="Hugging Face token.")
     return parser.parse_args()
 
@@ -18,13 +20,24 @@ def main():
 
     print(f"Loading model from: {args.model_path}...")
     
-    # Load the full model directly
-    model = AutoModelForCausalLM.from_pretrained(
-        args.model_path,
-        device_map="auto",
-        token=args.token,
-    )
-    tokenizer = AutoTokenizer.from_pretrained(args.model_path, token=args.token)
+    if args.use_onnx:
+        onnx_path = os.path.join(args.model_path, "onnx")
+        print(f"Using ONNX Runtime. Loading from: {onnx_path}")
+        model = ORTModelForCausalLM.from_pretrained(
+            onnx_path,
+            device_map="auto", # optimum handles device
+            token=args.token,
+        )
+        # Tokenizer is typically saved in the same ONNX dir or fallback to base
+        tokenizer = AutoTokenizer.from_pretrained(onnx_path, token=args.token)
+    else:
+        # Load the full model directly
+        model = AutoModelForCausalLM.from_pretrained(
+            args.model_path,
+            device_map="auto",
+            token=args.token,
+        )
+        tokenizer = AutoTokenizer.from_pretrained(args.model_path, token=args.token)
 
     print("\n--- Model Loaded. Type 'exit' to quit. ---\n")
 
