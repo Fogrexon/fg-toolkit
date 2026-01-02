@@ -140,7 +140,6 @@ To run the chat script inside the Docker container, use `--entrypoint python`:
 docker run --rm -it \
   --entrypoint python \
   -v $(pwd)/model_output:/app/output \
-  -e HF_TOKEN=$HF_TOKEN \
   fg-trainer \
   chat.py --model_path /app/output
 ```
