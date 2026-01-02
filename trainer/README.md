@@ -131,7 +131,7 @@ python chat.py --model_path ./output --use_onnx
 | :--- | :--- |
 | `--model_path` | (Required) Path to the fine-tuned model directory (e.g., `./output`). |
 | `--use_onnx` | Use ONNX Runtime for inference. Expects ONNX subfolder (e.g., `./output/onnx`). |
-| `--token` | (Optional) Hugging Face token. Not required if loading a local model. |
+| `--token` | (Optional) only needed if loading a model directly from Hugging Face Hub (e.g. `google/functiongemma-270m-it`). |
 
 ### Docker Usage for Chat
 
