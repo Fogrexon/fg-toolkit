@@ -1,9 +1,13 @@
 import { Message } from '@fg-toolkit/lib-web-runtime';
 
 const statusEl = document.getElementById('status')!;
-const chatContainer = document.getElementById('chat-container')!;
+const inventoryListEl = document.getElementById('inventory-list')!;
+const chatHistoryEl = document.getElementById('chat-history')!;
 const userInputEl = document.getElementById('user-input') as HTMLInputElement;
 const sendBtn = document.getElementById('send-btn') as HTMLButtonElement;
+
+// Inventory state
+const inventory: Map<string, number> = new Map();
 
 // Create worker
 const worker = new Worker(new URL('./worker.ts', import.meta.url), { type: 'module' });
@@ -33,11 +37,8 @@ worker.onmessage = (e) => {
                     currentModelMsgDiv.textContent = "";
                 }
                 currentFullResponse += data.token;
-
-                // Simplified display: just show the raw response
-                // In a production app you'd parse markdown or extract tool calls
                 currentModelMsgDiv.textContent = currentFullResponse;
-                chatContainer.scrollTop = chatContainer.scrollHeight;
+                chatHistoryEl.scrollTop = chatHistoryEl.scrollHeight;
             }
             break;
         case 'result':
@@ -67,19 +68,71 @@ async function init() {
     worker.postMessage({
         type: 'init',
         config: {
-            // Point to the public model folder
             modelPath: '/models/inventory-management-gemma-it-onnx',
             quantized: true
         }
     });
 }
 
+function updateInventoryDisplay() {
+    if (inventory.size === 0) {
+        inventoryListEl.innerHTML = '<p class="empty-message">まだアイテムがありません</p>';
+        return;
+    }
+
+    inventoryListEl.innerHTML = '';
+    Array.from(inventory.entries())
+        .sort(([a], [b]) => a.localeCompare(b, 'ja'))
+        .forEach(([name, quantity]) => {
+            const itemDiv = document.createElement('div');
+            itemDiv.className = 'inventory-item';
+            itemDiv.innerHTML = `
+                <span class="item-name">${name}</span>
+                <span class="item-quantity">${quantity}個</span>
+            `;
+            inventoryListEl.appendChild(itemDiv);
+        });
+}
+
+function addItem(name: string, quantity: number): string {
+    const current = inventory.get(name) || 0;
+    inventory.set(name, current + quantity);
+    updateInventoryDisplay();
+    return `${name}を${quantity}個追加しました。現在の在庫: ${inventory.get(name)}個`;
+}
+
+function removeItem(name: string, quantity: number): string {
+    const current = inventory.get(name) || 0;
+    if (current < quantity) {
+        return `エラー: ${name}の在庫が不足しています（現在: ${current}個）`;
+    }
+    const newQuantity = current - quantity;
+    if (newQuantity === 0) {
+        inventory.delete(name);
+    } else {
+        inventory.set(name, newQuantity);
+    }
+    updateInventoryDisplay();
+    return `${name}を${quantity}個削除しました。${newQuantity > 0 ? `残り: ${newQuantity}個` : '在庫がなくなりました'}`;
+}
+
+function listItems(): string {
+    if (inventory.size === 0) {
+        return '在庫にアイテムがありません。';
+    }
+
+    const items = Array.from(inventory.entries())
+        .map(([name, quantity]) => `- ${name}: ${quantity}個`)
+        .join('\n');
+    return `現在の在庫:\n${items}`;
+}
+
 function appendMessage(role: 'user' | 'model', text: string) {
     const div = document.createElement('div');
     div.className = `message ${role}`;
     div.textContent = text;
-    chatContainer.appendChild(div);
-    chatContainer.scrollTop = chatContainer.scrollHeight;
+    chatHistoryEl.appendChild(div);
+    chatHistoryEl.scrollTop = chatHistoryEl.scrollHeight;
     return div;
 }
 
@@ -101,7 +154,7 @@ async function handleSend() {
     sendBtn.disabled = true;
     statusEl.textContent = 'Status: Generating...';
 
-    // Create placeholder for result
+    // Create placeholder
     const modelMsgDiv = appendMessage('model', '...');
     currentModelMsgDiv = modelMsgDiv;
     currentFullResponse = "";
@@ -120,3 +173,4 @@ userInputEl.addEventListener('keypress', (e) => {
 });
 
 init();
+updateInventoryDisplay();

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>在庫管理デモ - FunctionGemma</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>📦 在庫管理デモ</h1>
+        <p class="subtitle">FunctionGemma による在庫管理システム</p>
+        
+        <div id="status" class="status">Status: Initializing...</div>
+        
+        <div class="inventory-section">
+            <h2>現在の在庫</h2>
+            <div id="inventory-list" class="inventory-list">
+                <p class="empty-message">まだアイテムがありません</p>
+            </div>
+        </div>
+        
+        <div class="chat-section">
+            <h2>チャット</h2>
+            <div id="chat-history" class="chat-history"></div>
+            
+            <div class="input-area">
+                <input 
+                    type="text" 
+                    id="user-input" 
+                    placeholder="例: ノートパソコンを3台追加して" 
+                    disabled
+                />
+                <button id="send-btn" disabled>送信</button>
+            </div>
+        </div>
+    </div>
+    
+    <script type="module" src="./main.ts"></script>
+</body>
+</html>

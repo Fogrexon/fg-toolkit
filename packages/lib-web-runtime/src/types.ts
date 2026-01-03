@@ -2,7 +2,7 @@
  * Represents a chat message.
  */
 export interface Message {
-    role: 'user' | 'model' | 'function';
+    role: 'user' | 'model' | 'function' | 'system';
     content: string;
 }
 

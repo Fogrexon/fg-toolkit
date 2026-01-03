@@ -1,104 +1,616 @@
 [
   {
-    "user_content": "What is the reimbursement limit for travel meals?",
-    "tool_name": "search_knowledge_base",
+    "user_content": "ノートパソコンを在庫に追加してください",
+    "tool_name": "add_item",
     "tool_arguments": {
-      "query": "travel meal reimbursement limit policy"
+      "name": "ノートパソコン",
+      "quantity": 1
     }
   },
   {
-    "user_content": "What is the current stock price of Google?",
-    "tool_name": "search_google",
+    "user_content": "キーボード5つ入荷したんだけど",
+    "tool_name": "add_item",
     "tool_arguments": {
-      "query": "current Google stock price"
+      "name": "キーボード",
+      "quantity": 5
     }
   },
   {
-    "user_content": "How do I configure the VPN for the New York office?",
-    "tool_name": "search_knowledge_base",
+    "user_content": "マウス10個買ってきたから登録お願い",
+    "tool_name": "add_item",
     "tool_arguments": {
-      "query": "VPN configuration guide New York office"
+      "name": "マウス",
+      "quantity": 10
     }
   },
   {
-    "user_content": "Explain the difference between REST and GraphQL.",
-    "tool_name": "search_google",
+    "user_content": "モニターが3台届いたので追加",
+    "tool_name": "add_item",
     "tool_arguments": {
-      "query": "difference between REST and GraphQL"
+      "name": "モニター",
+      "quantity": 3
     }
   },
   {
-    "user_content": "Who is the product owner for Project Chimera?",
-    "tool_name": "search_knowledge_base",
+    "user_content": "プリンター1台購入しました",
+    "tool_name": "add_item",
     "tool_arguments": {
-      "query": "Project Chimera product owner"
+      "name": "プリンター",
+      "quantity": 1
     }
   },
   {
-    "user_content": "Find the documentation for the 'requests' library in Python.",
-    "tool_name": "search_google",
+    "user_content": "ペン50本補充したいです",
+    "tool_name": "add_item",
     "tool_arguments": {
-      "query": "Python requests library documentation"
+      "name": "ペン",
+      "quantity": 50
     }
   },
   {
-    "user_content": "What are the core values listed in our employee handbook?",
-    "tool_name": "search_knowledge_base",
+    "user_content": "新しいオフィスチェアを8脚入れて",
+    "tool_name": "add_item",
     "tool_arguments": {
-      "query": "employee handbook core values"
+      "name": "オフィスチェア",
+      "quantity": 8
     }
   },
   {
-    "user_content": "What is the weather forecast for the company retreat in Bali?",
-    "tool_name": "search_google",
+    "user_content": "ホワイトボード2枚追加でお願いします",
+    "tool_name": "add_item",
     "tool_arguments": {
-      "query": "weather forecast Bali"
+      "name": "ホワイトボード",
+      "quantity": 2
     }
   },
   {
-    "user_content": "I need to reset my Okta password. How do I do that?",
-    "tool_name": "search_knowledge_base",
+    "user_content": "USBケーブル20本ストック",
+    "tool_name": "add_item",
     "tool_arguments": {
-      "query": "Okta password reset procedure"
+      "name": "USBケーブル",
+      "quantity": 20
     }
   },
   {
-    "user_content": "Who won the World Series last year?",
-    "tool_name": "search_google",
+    "user_content": "デスクライト15個入荷",
+    "tool_name": "add_item",
     "tool_arguments": {
-      "query": "MLB World Series winner last year"
+      "name": "デスクライト",
+      "quantity": 15
     }
   },
   {
-    "user_content": "Hello! How are you today?",
-    "assistant_content": "Hello! I'm doing well, thank you for asking. How can I help you today?"
+    "user_content": "コピー用紙30箱来たよ",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "コピー用紙",
+      "quantity": 30
+    }
   },
   {
-    "user_content": "What's your name?",
-    "assistant_content": "I am a model trained to help with company information and public search. How can I assist you?"
+    "user_content": "ファイルボックス12個登録して",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "ファイルボックス",
+      "quantity": 12
+    }
   },
   {
-    "user_content": "Can you write a poem about artificial intelligence?",
-    "assistant_content": "In circuits deep where logic flows,\nA mind of code and data grows.\nNot of flesh, but spark and light,\nLearning through the day and night."
+    "user_content": "クリップ1000個追加",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "クリップ",
+      "quantity": 1000
+    }
   },
   {
-    "user_content": "Can you order a pepperoni pizza for me?",
-    "assistant_content": "I'm sorry, but I don't have the capability to order food or make purchases. I can help you search for information instead."
+    "user_content": "付箋100個買ったから入れといて",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "付箋",
+      "quantity": 100
+    }
   },
   {
-    "user_content": "Turn off the living room lights.",
-    "assistant_content": "I don't have access to your smart home devices or lighting controls. My capabilities are limited to searching internal documents and public information."
+    "user_content": "ノート40冊保管",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "ノート",
+      "quantity": 40
+    }
   },
   {
-    "user_content": "Set an alarm for 7:00 AM tomorrow.",
-    "assistant_content": "I cannot manage alarms or timers for you. Please use your device's built-in alarm app."
+    "user_content": "消しゴム60個在庫に",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "消しゴム",
+      "quantity": 60
+    }
   },
   {
-    "user_content": "How do you feel about the current political situation?",
-    "assistant_content": "I don't have personal opinions or feelings about politics. I am designed to provide factual information and assist with specific tasks."
+    "user_content": "ホッチキス18個追加してちょうだい",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "ホッチキス",
+      "quantity": 18
+    }
   },
   {
-    "user_content": "I'm feeling a bit down today.",
-    "assistant_content": "I'm sorry to hear that you're feeling down. While I'm just an AI and can't offer professional support, I'm here to help with any tasks or information you might need."
+    "user_content": "HDMIケーブル8本仕入れました",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "HDMIケーブル",
+      "quantity": 8
+    }
+  },
+  {
+    "user_content": "電卓25個新規登録",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "電卓",
+      "quantity": 25
+    }
+  },
+  {
+    "user_content": "マウスパッド35枚納品されたので",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "マウスパッド",
+      "quantity": 35
+    }
+  },
+  {
+    "user_content": "ノートパソコン2台使うから出して",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "ノートパソコン",
+      "quantity": 2
+    }
+  },
+  {
+    "user_content": "キーボード3個必要なんだけど",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "キーボード",
+      "quantity": 3
+    }
+  },
+  {
+    "user_content": "マウス1個取りたい",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "マウス",
+      "quantity": 1
+    }
+  },
+  {
+    "user_content": "モニター2台貸し出しで",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "モニター",
+      "quantity": 2
+    }
+  },
+  {
+    "user_content": "ペン10本配布するので減らして",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "ペン",
+      "quantity": 10
+    }
+  },
+  {
+    "user_content": "壊れたプリンター1台廃棄",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "プリンター",
+      "quantity": 1
+    }
+  },
+  {
+    "user_content": "オフィスチェア3脚移動させた",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "オフィスチェア",
+      "quantity": 3
+    }
+  },
+  {
+    "user_content": "USBケーブル5本持ってかれた",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "USBケーブル",
+      "quantity": 5
+    }
+  },
+  {
+    "user_content": "デスクライト2個不良品だから除外",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "デスクライト",
+      "quantity": 2
+    }
+  },
+  {
+    "user_content": "コピー用紙8箱使い切った",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "コピー用紙",
+      "quantity": 8
+    }
+  },
+  {
+    "user_content": "ファイルボックス4個処分して",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "ファイルボックス",
+      "quantity": 4
+    }
+  },
+  {
+    "user_content": "クリップ200個なくなったみたい",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "クリップ",
+      "quantity": 200
+    }
+  },
+  {
+    "user_content": "付箋20個配った",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "付箋",
+      "quantity": 20
+    }
+  },
+  {
+    "user_content": "ノート15冊社員に渡したので",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "ノート",
+      "quantity": 15
+    }
+  },
+  {
+    "user_content": "消しゴム30個なくなってる",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "消しゴム",
+      "quantity": 30
+    }
+  },
+  {
+    "user_content": "ホッチキス6個紛失",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "ホッチキス",
+      "quantity": 6
+    }
+  },
+  {
+    "user_content": "今何があるか見せて",
+    "tool_name": "list_items",
+    "tool_arguments": {}
+  },
+  {
+    "user_content": "在庫の確認したい",
+    "tool_name": "list_items",
+    "tool_arguments": {}
+  },
+  {
+    "user_content": "ストック状況教えて",
+    "tool_name": "list_items",
+    "tool_arguments": {}
+  },
+  {
+    "user_content": "何が残ってる？",
+    "tool_name": "list_items",
+    "tool_arguments": {}
+  },
+  {
+    "user_content": "在庫リスト出して",
+    "tool_name": "list_items",
+    "tool_arguments": {}
+  },
+  {
+    "user_content": "全部の在庫見たいんだけど",
+    "tool_name": "list_items",
+    "tool_arguments": {}
+  },
+  {
+    "user_content": "現在の保管物を表示",
+    "tool_name": "list_items",
+    "tool_arguments": {}
+  },
+  {
+    "user_content": "どんなアイテムがあるか知りたい",
+    "tool_name": "list_items",
+    "tool_arguments": {}
+  },
+  {
+    "user_content": "在庫チェックお願い",
+    "tool_name": "list_items",
+    "tool_arguments": {}
+  },
+  {
+    "user_content": "一覧表示して",
+    "tool_name": "list_items",
+    "tool_arguments": {}
+  },
+  {
+    "user_content": "こんにちは",
+    "assistant_content": "こんにちは！在庫管理システムです。アイテムの追加、削除、確認などお手伝いします。"
+  },
+  {
+    "user_content": "よろしくお願いします",
+    "assistant_content": "よろしくお願いします！在庫管理でお困りのことがあれば何でもお申し付けください。"
+  },
+  {
+    "user_content": "ありがとう",
+    "assistant_content": "どういたしまして！また何かあればお声がけください。"
+  },
+  {
+    "user_content": "助かった！",
+    "assistant_content": "お役に立てて嬉しいです！在庫管理のことなら何でもご相談ください。"
+  },
+  {
+    "user_content": "今日の天気教えて",
+    "assistant_content": "申し訳ございません。私は在庫管理専用のシステムです。天気情報はご提供できませんが、在庫の追加・削除・確認でしたらお手伝いできます。"
+  },
+  {
+    "user_content": "今何時？",
+    "assistant_content": "時刻の確認はできませんが、在庫管理でしたらお任せください。アイテムの追加や確認が必要でしょうか？"
+  },
+  {
+    "user_content": "ランチのおすすめは？",
+    "assistant_content": "レストランの推薦はできませんが、在庫管理システムとして在庫の追加・削除・一覧表示をサポートします。"
+  },
+  {
+    "user_content": "週末の予定立てて",
+    "assistant_content": "スケジュール管理機能はございませんが、在庫管理は得意です。在庫に関して何かお手伝いできることはありますか？"
+  },
+  {
+    "user_content": "メール送っといて",
+    "assistant_content": "メール送信機能はありませんが、在庫管理でしたらサポートできます。在庫の確認や更新が必要ですか？"
+  },
+  {
+    "user_content": "計算してくれる？5+3は？",
+    "assistant_content": "計算機能はありませんが、在庫数の管理はお任せください。在庫の追加や削除のお手伝いをします。"
+  },
+  {
+    "user_content": "音楽かけて",
+    "assistant_content": "音楽再生はできませんが、在庫管理システムとして在庫操作をサポートします。何か在庫に関してお手伝いしましょうか？"
+  },
+  {
+    "user_content": "ニュース読んで",
+    "assistant_content": "ニュースの読み上げ機能はございませんが、在庫管理でしたらお手伝いできます。"
+  },
+  {
+    "user_content": "会議室予約できる？",
+    "assistant_content": "会議室の予約機能はありませんが、在庫管理は専門です。在庫に関してお困りのことはありますか？"
+  },
+  {
+    "user_content": "タクシー呼んで",
+    "assistant_content": "タクシーの手配はできませんが、在庫管理でしたらサポートします。在庫の追加や確認が必要でしょうか？"
+  },
+  {
+    "user_content": "翻訳してほしい",
+    "assistant_content": "翻訳機能はございませんが、在庫管理システムとして在庫操作をお手伝いします。"
+  },
+  {
+    "user_content": "おすすめの本教えて",
+    "assistant_content": "本の推薦はできませんが、在庫管理でしたらお任せください。アイテムの追加・削除・確認などをサポートします。"
+  },
+  {
+    "user_content": "宿題手伝って",
+    "assistant_content": "宿題のサポートはできませんが、在庫管理は得意です。在庫に関することでしたら何でもどうぞ。"
+  },
+  {
+    "user_content": "冗談言って",
+    "assistant_content": "ジョークは苦手ですが、在庫管理は得意です！在庫の追加や確認のお手伝いをしますよ。"
+  },
+  {
+    "user_content": "占いして",
+    "assistant_content": "占い機能はありませんが、在庫の未来（在庫数）なら管理できます！在庫操作でお手伝いしましょう。"
+  },
+  {
+    "user_content": "ゲームしたい",
+    "assistant_content": "ゲーム機能はございませんが、在庫管理ゲーム（？）でしたら！在庫の追加や削除をお手伝いします。"
+  },
+  {
+    "user_content": "写真撮って",
+    "assistant_content": "カメラ機能はありませんが、在庫の記録は得意です。在庫管理でお手伝いできることはありますか？"
+  },
+  {
+    "user_content": "道案内して",
+    "assistant_content": "ナビゲーション機能はございませんが、在庫管理でしたらご案内できます。在庫操作が必要ですか？"
+  },
+  {
+    "user_content": "アラームセットして",
+    "assistant_content": "アラーム機能はありませんが、在庫の追加・削除・確認アラートならお任せください！"
+  },
+  {
+    "user_content": "リマインダー設定して",
+    "assistant_content": "リマインダー機能はございませんが、在庫管理でしたらいつでもサポートします。"
+  },
+  {
+    "user_content": "ヘッドセット6個新しく買った",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "ヘッドセット",
+      "quantity": 6
+    }
+  },
+  {
+    "user_content": "Webカメラ4台入荷したので登録",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "Webカメラ",
+      "quantity": 4
+    }
+  },
+  {
+    "user_content": "外付けHDD3台追加で",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "外付けHDD",
+      "quantity": 3
+    }
+  },
+  {
+    "user_content": "LANケーブル15本届いた",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "LANケーブル",
+      "quantity": 15
+    }
+  },
+  {
+    "user_content": "電源タップ10個買ってきました",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "電源タップ",
+      "quantity": 10
+    }
+  },
+  {
+    "user_content": "延長コード7本補充",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "延長コード",
+      "quantity": 7
+    }
+  },
+  {
+    "user_content": "マーカー30本追加してください",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "マーカー",
+      "quantity": 30
+    }
+  },
+  {
+    "user_content": "クリアファイル200枚入荷",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "クリアファイル",
+      "quantity": 200
+    }
+  },
+  {
+    "user_content": "封筒100枚ストック",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "封筒",
+      "quantity": 100
+    }
+  },
+  {
+    "user_content": "名刺用紙5箱追加",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "名刺用紙",
+      "quantity": 5
+    }
+  },
+  {
+    "user_content": "ヘッドセット2個壊れたので除外",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "ヘッドセット",
+      "quantity": 2
+    }
+  },
+  {
+    "user_content": "Webカメラ1台持ってった",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "Webカメラ",
+      "quantity": 1
+    }
+  },
+  {
+    "user_content": "外付けHDD1台貸し出し",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "外付けHDD",
+      "quantity": 1
+    }
+  },
+  {
+    "user_content": "LANケーブル4本使った",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "LANケーブル",
+      "quantity": 4
+    }
+  },
+  {
+    "user_content": "電源タップ3個会議室に移動",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "電源タップ",
+      "quantity": 3
+    }
+  },
+  {
+    "user_content": "延長コード2本配布",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "延長コード",
+      "quantity": 2
+    }
+  },
+  {
+    "user_content": "マーカー8本なくなってる",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "マーカー",
+      "quantity": 8
+    }
+  },
+  {
+    "user_content": "クリアファイル50枚使用済み",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "クリアファイル",
+      "quantity": 50
+    }
+  },
+  {
+    "user_content": "封筒25枚郵送で使った",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "封筒",
+      "quantity": 25
+    }
+  },
+  {
+    "user_content": "名刺用紙1箱なくなった",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "名刺用紙",
+      "quantity": 1
+    }
+  },
+  {
+    "user_content": "お疲れ様",
+    "assistant_content": "お疲れ様です！在庫管理で何かお手伝いできることはありますか？"
+  },
+  {
+    "user_content": "頑張って",
+    "assistant_content": "ありがとうございます！在庫管理、頑張ってサポートします！"
+  },
+  {
+    "user_content": "便利だね",
+    "assistant_content": "ありがとうございます！在庫管理をもっと便利にできるよう頑張ります。"
+  },
+  {
+    "user_content": "すごいね",
+    "assistant_content": "ありがとうございます！在庫管理のことなら何でもお任せください。"
+  },
+  {
+    "user_content": "完璧！",
+    "assistant_content": "ありがとうございます！これからも在庫管理をしっかりサポートします。"
   }
 ]

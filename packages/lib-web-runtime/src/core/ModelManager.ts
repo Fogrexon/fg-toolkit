@@ -10,9 +10,11 @@ env.allowRemoteModels = true; // Default
  * Configuration options for model loading
  */
 export interface ModelLoadOptions {
-  modelId?: string;
+  modelPath?: string;
   quantized?: boolean;
   progressCallback?: (progress: any) => void;
+  systemPrompt?: string;
+  // Intentionally omitting modelId to restrict arbitrary HF model loading
 }
 
 // Define a minimal interface for the pipeline to avoid 'any' if types are not fully available
@@ -26,7 +28,9 @@ interface TextGenerationPipeline {
  */
 export class ModelManager {
   private pipe: TextGenerationPipeline | null = null;
-  private modelId: string = 'onnx-community/functiongemma-270m-it-ONNX'; // Default model
+  // Default model constant - immutable from outside
+  private readonly DEFAULT_MODEL_ID = 'onnx-community/functiongemma-270m-it-ONNX';
+  private systemPrompt?: string;
 
   /**
    * Loads the model.
@@ -37,21 +41,39 @@ export class ModelManager {
       return;
     }
 
-    if (options.modelId) {
-      this.modelId = options.modelId;
+    let modelToLoad = this.DEFAULT_MODEL_ID;
+
+    // Store system prompt if provided
+    if (options.systemPrompt) {
+      this.systemPrompt = options.systemPrompt;
     }
 
-    // If it looks like a local path, disable remote fetching to avoid "invalid model ID" errors from HF Hub
-    if (this.modelId.startsWith('/') || this.modelId.startsWith('./')) {
-      env.allowRemoteModels = false;
-      console.log('Detected local model path, disabling remote HF Hub access');
+    // Strict model loading policy:
+    // 1. If modelPath is provided, load from that path/URL.
+    // 2. Otherwise/Default, load the specific FunctionGemma model.
+    // Arbitrary HF model IDs are not supported.
+
+    if (options.modelPath) {
+      modelToLoad = options.modelPath;
+      console.log(`Loading custom model from path: ${modelToLoad}`);
+
+      // If it looks like a local path or URL, we might need to adjust env settings or just pass it to pipeline.
+      // transformers.js handles URLs/Paths in place of model ID.
+      // For local files served by web server, it is treated as a path/URL.
+
+      // Disable remote models if loading locally to avoid confusion?
+      // Actually, if we pass a path starting with ./ or /, it is treated as local/URL resource.
+      if (modelToLoad.startsWith('/') || modelToLoad.startsWith('./') || modelToLoad.startsWith('http')) {
+        env.allowRemoteModels = false;
+      }
+    } else {
+      console.log(`Loading default model: ${modelToLoad}`);
+      // Ensure remote models are allowed for the default usage
+      env.allowRemoteModels = true;
     }
 
-    console.log(`Pipeline loading with modelId: ${this.modelId}`);
-
-    // TODO: Ideally we should use a specific FunctionGemma ONNX model here when available
-    // For now we use a placeholder or a text-generation pipeline.
-    this.pipe = await pipeline('text-generation', this.modelId, {
+    // Pipeline call
+    this.pipe = await pipeline('text-generation', modelToLoad, {
       progress_callback: options.progressCallback,
       dtype: options.quantized ? 'q4' : 'fp32',
     }) as unknown as TextGenerationPipeline;
@@ -70,8 +92,18 @@ export class ModelManager {
       throw new Error('Model not loaded. Call load() first.');
     }
 
+    // Inject system prompt if configured
+    let messagesWithSystem = messages;
+    if (this.systemPrompt) {
+      // Add system message at the beginning
+      messagesWithSystem = [
+        { role: 'system', content: this.systemPrompt },
+        ...messages
+      ];
+    }
+
     // Use the tokenizer's chat template
-    const prompt = this.pipe.tokenizer.apply_chat_template(messages, {
+    const prompt = this.pipe.tokenizer.apply_chat_template(messagesWithSystem, {
       tools: tools,
       tokenize: false,
       add_generation_prompt: true
