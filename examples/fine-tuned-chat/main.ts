@@ -68,8 +68,8 @@ async function init() {
         type: 'init',
         config: {
             // Point to the public model folder
-            modelId: '/model/',
-            quantized: false
+            modelPath: '/models/inventory-management-gemma-it-onnx',
+            quantized: true
         }
     });
 }
