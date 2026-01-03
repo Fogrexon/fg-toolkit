@@ -1,104 +1,173 @@
 [
   {
-    "user_content": "What is the reimbursement limit for travel meals?",
-    "tool_name": "search_knowledge_base",
+    "user_content": "Add a laptop to the inventory",
+    "tool_name": "add_item",
     "tool_arguments": {
-      "query": "travel meal reimbursement limit policy"
+      "name": "Laptop",
+      "quantity": 1
     }
   },
   {
-    "user_content": "What is the current stock price of Google?",
-    "tool_name": "search_google",
+    "user_content": "I need to add 5 keyboards to stock",
+    "tool_name": "add_item",
     "tool_arguments": {
-      "query": "current Google stock price"
+      "name": "Keyboard",
+      "quantity": 5
     }
   },
   {
-    "user_content": "How do I configure the VPN for the New York office?",
-    "tool_name": "search_knowledge_base",
+    "user_content": "Register 10 wireless mice in the inventory",
+    "tool_name": "add_item",
     "tool_arguments": {
-      "query": "VPN configuration guide New York office"
+      "name": "Wireless Mouse",
+      "quantity": 10
     }
   },
   {
-    "user_content": "Explain the difference between REST and GraphQL.",
-    "tool_name": "search_google",
+    "user_content": "Remove 2 laptops from inventory",
+    "tool_name": "remove_item",
     "tool_arguments": {
-      "query": "difference between REST and GraphQL"
+      "name": "Laptop",
+      "quantity": 2
     }
   },
   {
-    "user_content": "Who is the product owner for Project Chimera?",
-    "tool_name": "search_knowledge_base",
+    "user_content": "Take out 3 keyboards from stock",
+    "tool_name": "remove_item",
     "tool_arguments": {
-      "query": "Project Chimera product owner"
+      "name": "Keyboard",
+      "quantity": 3
     }
   },
   {
-    "user_content": "Find the documentation for the 'requests' library in Python.",
-    "tool_name": "search_google",
+    "user_content": "Delete 1 wireless mouse from the inventory",
+    "tool_name": "remove_item",
     "tool_arguments": {
-      "query": "Python requests library documentation"
+      "name": "Wireless Mouse",
+      "quantity": 1
     }
   },
   {
-    "user_content": "What are the core values listed in our employee handbook?",
-    "tool_name": "search_knowledge_base",
+    "user_content": "Show me the current inventory",
+    "tool_name": "list_items",
+    "tool_arguments": {}
+  },
+  {
+    "user_content": "What items do we have in stock?",
+    "tool_name": "list_items",
+    "tool_arguments": {}
+  },
+  {
+    "user_content": "Display all inventory items",
+    "tool_name": "list_items",
+    "tool_arguments": {}
+  },
+  {
+    "user_content": "Add 3 monitors",
+    "tool_name": "add_item",
     "tool_arguments": {
-      "query": "employee handbook core values"
+      "name": "Monitor",
+      "quantity": 3
     }
   },
   {
-    "user_content": "What is the weather forecast for the company retreat in Bali?",
-    "tool_name": "search_google",
+    "user_content": "Put 7 USB cables in inventory",
+    "tool_name": "add_item",
     "tool_arguments": {
-      "query": "weather forecast Bali"
+      "name": "USB Cable",
+      "quantity": 7
     }
   },
   {
-    "user_content": "I need to reset my Okta password. How do I do that?",
-    "tool_name": "search_knowledge_base",
+    "user_content": "Remove 2 monitors",
+    "tool_name": "remove_item",
     "tool_arguments": {
-      "query": "Okta password reset procedure"
+      "name": "Monitor",
+      "quantity": 2
     }
   },
   {
-    "user_content": "Who won the World Series last year?",
-    "tool_name": "search_google",
+    "user_content": "Add 15 office chairs to the system",
+    "tool_name": "add_item",
     "tool_arguments": {
-      "query": "MLB World Series winner last year"
+      "name": "Office Chair",
+      "quantity": 15
     }
   },
   {
-    "user_content": "Hello! How are you today?",
-    "assistant_content": "Hello! I'm doing well, thank you for asking. How can I help you today?"
+    "user_content": "Register 20 desk lamps",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "Desk Lamp",
+      "quantity": 20
+    }
   },
   {
-    "user_content": "What's your name?",
-    "assistant_content": "I am a model trained to help with company information and public search. How can I assist you?"
+    "user_content": "Remove 5 office chairs from inventory",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "Office Chair",
+      "quantity": 5
+    }
   },
   {
-    "user_content": "Can you write a poem about artificial intelligence?",
-    "assistant_content": "In circuits deep where logic flows,\nA mind of code and data grows.\nNot of flesh, but spark and light,\nLearning through the day and night."
+    "user_content": "Add a printer",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "Printer",
+      "quantity": 1
+    }
   },
   {
-    "user_content": "Can you order a pepperoni pizza for me?",
-    "assistant_content": "I'm sorry, but I don't have the capability to order food or make purchases. I can help you search for information instead."
+    "user_content": "Stock 50 pens",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "Pen",
+      "quantity": 50
+    }
   },
   {
-    "user_content": "Turn off the living room lights.",
-    "assistant_content": "I don't have access to your smart home devices or lighting controls. My capabilities are limited to searching internal documents and public information."
+    "user_content": "Take 10 pens out",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "Pen",
+      "quantity": 10
+    }
   },
   {
-    "user_content": "Set an alarm for 7:00 AM tomorrow.",
-    "assistant_content": "I cannot manage alarms or timers for you. Please use your device's built-in alarm app."
+    "user_content": "Add 8 whiteboards to inventory",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "Whiteboard",
+      "quantity": 8
+    }
   },
   {
-    "user_content": "How do you feel about the current political situation?",
-    "assistant_content": "I don't have personal opinions or feelings about politics. I am designed to provide factual information and assist with specific tasks."
+    "user_content": "Remove 1 printer",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "Printer",
+      "quantity": 1
+    }
   },
   {
-    "user_content": "I'm feeling a bit down today.",
-    "assistant_content": "I'm sorry to hear that you're feeling down. While I'm just an AI and can't offer professional support, I'm here to help with any tasks or information you might need."
+    "user_content": "Hello!",
+    "assistant_content": "Hello! I'm an inventory management assistant. I can help you add items, remove items, or show you the current inventory. What would you like to do?"
+  },
+  {
+    "user_content": "What can you do?",
+    "assistant_content": "I can help you manage your inventory! You can ask me to:\n- Add items to the inventory\n- Remove items from the inventory\n- Show you all items currently in stock\n\nJust tell me what you need!"
+  },
+  {
+    "user_content": "Thanks for your help!",
+    "assistant_content": "You're welcome! Feel free to ask if you need any inventory management assistance."
+  },
+  {
+    "user_content": "What's the weather today?",
+    "assistant_content": "I'm sorry, I'm specialized in inventory management only. I can help you add, remove, or list items in your inventory, but I don't have access to weather information."
+  },
+  {
+    "user_content": "Can you order pizza?",
+    "assistant_content": "I can't order food, but I can help you manage your inventory! Would you like to add, remove, or check items in stock?"
   }
 ]
