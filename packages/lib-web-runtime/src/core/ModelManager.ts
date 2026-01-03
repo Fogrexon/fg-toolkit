@@ -9,13 +9,11 @@ env.allowRemoteModels = true; // Default
 /**
  * Configuration options for model loading
  */
-/**
- * Configuration options for model loading
- */
 export interface ModelLoadOptions {
   modelPath?: string;
   quantized?: boolean;
   progressCallback?: (progress: any) => void;
+  systemPrompt?: string;
   // Intentionally omitting modelId to restrict arbitrary HF model loading
 }
 
@@ -32,6 +30,7 @@ export class ModelManager {
   private pipe: TextGenerationPipeline | null = null;
   // Default model constant - immutable from outside
   private readonly DEFAULT_MODEL_ID = 'onnx-community/functiongemma-270m-it-ONNX';
+  private systemPrompt?: string;
 
   /**
    * Loads the model.
@@ -43,6 +42,11 @@ export class ModelManager {
     }
 
     let modelToLoad = this.DEFAULT_MODEL_ID;
+
+    // Store system prompt if provided
+    if (options.systemPrompt) {
+      this.systemPrompt = options.systemPrompt;
+    }
 
     // Strict model loading policy:
     // 1. If modelPath is provided, load from that path/URL.
@@ -88,8 +92,18 @@ export class ModelManager {
       throw new Error('Model not loaded. Call load() first.');
     }
 
+    // Inject system prompt if configured
+    let messagesWithSystem = messages;
+    if (this.systemPrompt) {
+      // Add system message at the beginning
+      messagesWithSystem = [
+        { role: 'system', content: this.systemPrompt },
+        ...messages
+      ];
+    }
+
     // Use the tokenizer's chat template
-    const prompt = this.pipe.tokenizer.apply_chat_template(messages, {
+    const prompt = this.pipe.tokenizer.apply_chat_template(messagesWithSystem, {
       tools: tools,
       tokenize: false,
       add_generation_prompt: true
