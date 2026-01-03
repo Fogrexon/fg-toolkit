@@ -24,6 +24,222 @@
     }
   },
   {
+    "user_content": "モニター3台をストックして",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "モニター",
+      "quantity": 3
+    }
+  },
+  {
+    "user_content": "USBケーブル7本を保管したい",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "USBケーブル",
+      "quantity": 7
+    }
+  },
+  {
+    "user_content": "オフィスチェアを15脚在庫に加えて",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "オフィスチェア",
+      "quantity": 15
+    }
+  },
+  {
+    "user_content": "デスクランプ20個補充して",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "デスクランプ",
+      "quantity": 20
+    }
+  },
+  {
+    "user_content": "プリンターを増やしたい",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "プリンター",
+      "quantity": 1
+    }
+  },
+  {
+    "user_content": "ペン50本入荷しました",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "ペン",
+      "quantity": 50
+    }
+  },
+  {
+    "user_content": "ホワイトボード8枚追加",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "ホワイトボード",
+      "quantity": 8
+    }
+  },
+  {
+    "user_content": "マウスパッドを30個ストックしてほしい",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "マウスパッド",
+      "quantity": 30
+    }
+  },
+  {
+    "user_content": "HDMIケーブルを12本登録",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "HDMIケーブル",
+      "quantity": 12
+    }
+  },
+  {
+    "user_content": "ノート25冊を在庫に入れる",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "ノート",
+      "quantity": 25
+    }
+  },
+  {
+    "user_content": "消しゴム100個追加してください",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "消しゴム",
+      "quantity": 100
+    }
+  },
+  {
+    "user_content": "スタンドライト4台を保管",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "スタンドライト",
+      "quantity": 4
+    }
+  },
+  {
+    "user_content": "LANケーブルを20本入れたいです",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "LANケーブル",
+      "quantity": 20
+    }
+  },
+  {
+    "user_content": "デスクマット6枚補充したい",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "デスクマット",
+      "quantity": 6
+    }
+  },
+  {
+    "user_content": "ヘッドセット15個ストック",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "ヘッドセット",
+      "quantity": 15
+    }
+  },
+  {
+    "user_content": "外付けHDDを5台追加してほしい",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "外付けHDD",
+      "quantity": 5
+    }
+  },
+  {
+    "user_content": "Webカメラ10台入荷",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "Webカメラ",
+      "quantity": 10
+    }
+  },
+  {
+    "user_content": "バインダーを40個登録して",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "バインダー",
+      "quantity": 40
+    }
+  },
+  {
+    "user_content": "クリアファイル200枚在庫に加えたい",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "クリアファイル",
+      "quantity": 200
+    }
+  },
+  {
+    "user_content": "ボールペン80本補充",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "ボールペン",
+      "quantity": 80
+    }
+  },
+  {
+    "user_content": "付箋を150個追加してください",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "付箋",
+      "quantity": 150
+    }
+  },
+  {
+    "user_content": "カッター18個を在庫に",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "カッター",
+      "quantity": 18
+    }
+  },
+  {
+    "user_content": "ホッチキス12個入れて",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "ホッチキス",
+      "quantity": 12
+    }
+  },
+  {
+    "user_content": "テープ60個ストックして",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "テープ",
+      "quantity": 60
+    }
+  },
+  {
+    "user_content": "クリップ500個登録したい",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "クリップ",
+      "quantity": 500
+    }
+  },
+  {
+    "user_content": "定規35本を補充してほしい",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "定規",
+      "quantity": 35
+    }
+  },
+  {
+    "user_content": "はさみ22個追加",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "はさみ",
+      "quantity": 22
+    }
+  },
+  {
     "user_content": "ノートパソコンを2台在庫から削除",
     "tool_name": "remove_item",
     "tool_arguments": {
@@ -48,6 +264,222 @@
     }
   },
   {
+    "user_content": "モニターを2台削除して",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "モニター",
+      "quantity": 2
+    }
+  },
+  {
+    "user_content": "オフィスチェア5脚を在庫から除外",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "オフィスチェア",
+      "quantity": 5
+    }
+  },
+  {
+    "user_content": "プリンター1台減らして",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "プリンター",
+      "quantity": 1
+    }
+  },
+  {
+    "user_content": "ペン10本取り出す",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "ペン",
+      "quantity": 10
+    }
+  },
+  {
+    "user_content": "USBケーブルを3本出庫したい",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "USBケーブル",
+      "quantity": 3
+    }
+  },
+  {
+    "user_content": "デスクランプ2個払い出して",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "デスクランプ",
+      "quantity": 2
+    }
+  },
+  {
+    "user_content": "ホワイトボード1枚を削除",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "ホワイトボード",
+      "quantity": 1
+    }
+  },
+  {
+    "user_content": "マウスパッド5個を在庫から外して",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "マウスパッド",
+      "quantity": 5
+    }
+  },
+  {
+    "user_content": "HDMIケーブル4本消してください",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "HDMIケーブル",
+      "quantity": 4
+    }
+  },
+  {
+    "user_content": "ノート10冊減らしたい",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "ノート",
+      "quantity": 10
+    }
+  },
+  {
+    "user_content": "消しゴムを20個取り除いて",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "消しゴム",
+      "quantity": 20
+    }
+  },
+  {
+    "user_content": "スタンドライト1台出庫",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "スタンドライト",
+      "quantity": 1
+    }
+  },
+  {
+    "user_content": "LANケーブル8本を払い出したい",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "LANケーブル",
+      "quantity": 8
+    }
+  },
+  {
+    "user_content": "デスクマット2枚削除して",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "デスクマット",
+      "quantity": 2
+    }
+  },
+  {
+    "user_content": "ヘッドセットを3個在庫から減らす",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "ヘッドセット",
+      "quantity": 3
+    }
+  },
+  {
+    "user_content": "外付けHDD1台取り出してください",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "外付けHDD",
+      "quantity": 1
+    }
+  },
+  {
+    "user_content": "Webカメラ2台消去",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "Webカメラ",
+      "quantity": 2
+    }
+  },
+  {
+    "user_content": "バインダー6個を除外したい",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "バインダー",
+      "quantity": 6
+    }
+  },
+  {
+    "user_content": "クリアファイル30枚出して",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "クリアファイル",
+      "quantity": 30
+    }
+  },
+  {
+    "user_content": "ボールペン15本減らしてください",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "ボールペン",
+      "quantity": 15
+    }
+  },
+  {
+    "user_content": "付箋25個払い出し",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "付箋",
+      "quantity": 25
+    }
+  },
+  {
+    "user_content": "カッター3個を削除して",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "カッター",
+      "quantity": 3
+    }
+  },
+  {
+    "user_content": "ホッチキス2個取り出したい",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "ホッチキス",
+      "quantity": 2
+    }
+  },
+  {
+    "user_content": "テープ10個在庫から外す",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "テープ",
+      "quantity": 10
+    }
+  },
+  {
+    "user_content": "クリップ100個消してほしい",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "クリップ",
+      "quantity": 100
+    }
+  },
+  {
+    "user_content": "定規5本減らして",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "定規",
+      "quantity": 5
+    }
+  },
+  {
+    "user_content": "はさみ4個を出庫してください",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "はさみ",
+      "quantity": 4
+    }
+  },
+  {
     "user_content": "現在の在庫を見せて",
     "tool_name": "list_items",
     "tool_arguments": {}
@@ -63,91 +495,888 @@
     "tool_arguments": {}
   },
   {
-    "user_content": "モニターを3台追加",
+    "user_content": "在庫リストを教えて",
+    "tool_name": "list_items",
+    "tool_arguments": {}
+  },
+  {
+    "user_content": "ストック状況を確認したい",
+    "tool_name": "list_items",
+    "tool_arguments": {}
+  },
+  {
+    "user_content": "在庫一覧をください",
+    "tool_name": "list_items",
+    "tool_arguments": {}
+  },
+  {
+    "user_content": "何が在庫にあるか見せて",
+    "tool_name": "list_items",
+    "tool_arguments": {}
+  },
+  {
+    "user_content": "在庫状況を表示して",
+    "tool_name": "list_items",
+    "tool_arguments": {}
+  },
+  {
+    "user_content": "アイテム一覧が見たい",
+    "tool_name": "list_items",
+    "tool_arguments": {}
+  },
+  {
+    "user_content": "在庫の中身を確認",
+    "tool_name": "list_items",
+    "tool_arguments": {}
+  },
+  {
+    "user_content": "保管中のアイテムを教えて",
+    "tool_name": "list_items",
+    "tool_arguments": {}
+  },
+  {
+    "user_content": "ストックリストをお願いします",
+    "tool_name": "list_items",
+    "tool_arguments": {}
+  },
+  {
+    "user_content": "在庫管理画面を見せて",
+    "tool_name": "list_items",
+    "tool_arguments": {}
+  },
+  {
+    "user_content": "全アイテムをリストアップ",
+    "tool_name": "list_items",
+    "tool_arguments": {}
+  },
+  {
+    "user_content": "在庫確認したいです",
+    "tool_name": "list_items",
+    "tool_arguments": {}
+  },
+  {
+    "user_content": "どんなものが在庫にありますか",
+    "tool_name": "list_items",
+    "tool_arguments": {}
+  },
+  {
+    "user_content": "在庫品目を表示してください",
+    "tool_name": "list_items",
+    "tool_arguments": {}
+  },
+  {
+    "user_content": "ストック中のものを見たい",
+    "tool_name": "list_items",
+    "tool_arguments": {}
+  },
+  {
+    "user_content": "在庫の内訳を教えて",
+    "tool_name": "list_items",
+    "tool_arguments": {}
+  },
+  {
+    "user_content": "現在のストック状況は？",
+    "tool_name": "list_items",
+    "tool_arguments": {}
+  },
+  {
+    "user_content": "電卓を18個在庫に追加してほしい",
     "tool_name": "add_item",
     "tool_arguments": {
-      "name": "モニター",
-      "quantity": 3
+      "name": "電卓",
+      "quantity": 18
     }
   },
   {
-    "user_content": "USBケーブルを7本在庫に入れる",
+    "user_content": "蛍光ペン45本ストックして",
     "tool_name": "add_item",
     "tool_arguments": {
-      "name": "USBケーブル",
-      "quantity": 7
+      "name": "蛍光ペン",
+      "quantity": 45
     }
   },
   {
-    "user_content": "モニターを2台削除",
-    "tool_name": "remove_item",
-    "tool_arguments": {
-      "name": "モニター",
-      "quantity": 2
-    }
-  },
-  {
-    "user_content": "オフィスチェアを15脚システムに追加",
+    "user_content": "マーカー35本を登録したい",
     "tool_name": "add_item",
     "tool_arguments": {
-      "name": "オフィスチェア",
-      "quantity": 15
+      "name": "マーカー",
+      "quantity": 35
     }
   },
   {
-    "user_content": "デスクランプを20個登録",
+    "user_content": "修正テープ28個補充",
     "tool_name": "add_item",
     "tool_arguments": {
-      "name": "デスクランプ",
-      "quantity": 20
+      "name": "修正テープ",
+      "quantity": 28
     }
   },
   {
-    "user_content": "オフィスチェアを5脚在庫から除外",
-    "tool_name": "remove_item",
-    "tool_arguments": {
-      "name": "オフィスチェア",
-      "quantity": 5
-    }
-  },
-  {
-    "user_content": "プリンターを追加",
+    "user_content": "シャープペンシル55本追加して",
     "tool_name": "add_item",
     "tool_arguments": {
-      "name": "プリンター",
-      "quantity": 1
+      "name": "シャープペンシル",
+      "quantity": 55
     }
   },
   {
-    "user_content": "ペンを50本ストック",
+    "user_content": "鉛筆92本を在庫に入れて",
     "tool_name": "add_item",
     "tool_arguments": {
-      "name": "ペン",
-      "quantity": 50
+      "name": "鉛筆",
+      "quantity": 92
     }
   },
   {
-    "user_content": "ペンを10本取り出す",
-    "tool_name": "remove_item",
+    "user_content": "コピー用紙を30箱保管したい",
+    "tool_name": "add_item",
     "tool_arguments": {
-      "name": "ペン",
+      "name": "コピー用紙",
+      "quantity": 30
+    }
+  },
+  {
+    "user_content": "レターケース12個追加",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "レターケース",
+      "quantity": 12
+    }
+  },
+  {
+    "user_content": "ペン立て24個ストック",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "ペン立て",
+      "quantity": 24
+    }
+  },
+  {
+    "user_content": "マグネット200個登録してください",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "マグネット",
+      "quantity": 200
+    }
+  },
+  {
+    "user_content": "ゴミ箱10個を補充して",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "ゴミ箱",
       "quantity": 10
     }
   },
   {
-    "user_content": "ホワイトボードを8枚在庫に追加",
+    "user_content": "デスクトレー8個在庫に加えたい",
     "tool_name": "add_item",
     "tool_arguments": {
-      "name": "ホワイトボード",
+      "name": "デスクトレー",
       "quantity": 8
     }
   },
   {
-    "user_content": "プリンターを1台削除",
+    "user_content": "名刺入れ15個を追加",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "名刺入れ",
+      "quantity": 15
+    }
+  },
+  {
+    "user_content": "カレンダー20個入荷しました",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "カレンダー",
+      "quantity": 20
+    }
+  },
+  {
+    "user_content": "ファイルボックス25個ストックしてほしい",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "ファイルボックス",
+      "quantity": 25
+    }
+  },
+  {
+    "user_content": "書類トレー14個を保管",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "書類トレー",
+      "quantity": 14
+    }
+  },
+  {
+    "user_content": "クリップボード18枚登録して",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "クリップボード",
+      "quantity": 18
+    }
+  },
+  {
+    "user_content": "印鑑マット32個補充したい",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "印鑑マット",
+      "quantity": 32
+    }
+  },
+  {
+    "user_content": "朱肉26個を在庫に",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "朱肉",
+      "quantity": 26
+    }
+  },
+  {
+    "user_content": "スタンプ台40個追加してください",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "スタンプ台",
+      "quantity": 40
+    }
+  },
+  {
+    "user_content": "電卓3個を在庫から取り出して",
     "tool_name": "remove_item",
     "tool_arguments": {
-      "name": "プリンター",
+      "name": "電卓",
+      "quantity": 3
+    }
+  },
+  {
+    "user_content": "蛍光ペン8本削除したい",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "蛍光ペン",
+      "quantity": 8
+    }
+  },
+  {
+    "user_content": "マーカー5本減らして",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "マーカー",
+      "quantity": 5
+    }
+  },
+  {
+    "user_content": "修正テープ4個出庫",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "修正テープ",
+      "quantity": 4
+    }
+  },
+  {
+    "user_content": "シャープペンシル12本を払い出してください",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "シャープペンシル",
+      "quantity": 12
+    }
+  },
+  {
+    "user_content": "鉛筆20本消して",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "鉛筆",
+      "quantity": 20
+    }
+  },
+  {
+    "user_content": "コピー用紙5箱を在庫から外したい",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "コピー用紙",
+      "quantity": 5
+    }
+  },
+  {
+    "user_content": "レターケース2個取り除いて",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "レターケース",
+      "quantity": 2
+    }
+  },
+  {
+    "user_content": "ペン立て3個削除",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "ペン立て",
+      "quantity": 3
+    }
+  },
+  {
+    "user_content": "マグネット50個減らしてほしい",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "マグネット",
+      "quantity": 50
+    }
+  },
+  {
+    "user_content": "ゴミ箱1個を出庫して",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "ゴミ箱",
       "quantity": 1
+    }
+  },
+  {
+    "user_content": "デスクトレー2個払い出し",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "デスクトレー",
+      "quantity": 2
+    }
+  },
+  {
+    "user_content": "名刺入れ4個を在庫から消去",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "名刺入れ",
+      "quantity": 4
+    }
+  },
+  {
+    "user_content": "カレンダー6個取り出したい",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "カレンダー",
+      "quantity": 6
+    }
+  },
+  {
+    "user_content": "ファイルボックス7個除外して",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "ファイルボックス",
+      "quantity": 7
+    }
+  },
+  {
+    "user_content": "書類トレー3個を削減",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "書類トレー",
+      "quantity": 3
+    }
+  },
+  {
+    "user_content": "クリップボード5枚減らしてください",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "クリップボード",
+      "quantity": 5
+    }
+  },
+  {
+    "user_content": "印鑑マット8個出して",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "印鑑マット",
+      "quantity": 8
+    }
+  },
+  {
+    "user_content": "朱肉2個を在庫から外して",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "朱肉",
+      "quantity": 2
+    }
+  },
+  {
+    "user_content": "スタンプ台10個削除したい",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "スタンプ台",
+      "quantity": 10
+    }
+  },
+  {
+    "user_content": "メモ帳を60冊追加してほしいです",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "メモ帳",
+      "quantity": 60
+    }
+  },
+  {
+    "user_content": "付箋紙120個ストックして",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "付箋紙",
+      "quantity": 120
+    }
+  },
+  {
+    "user_content": "インデックス200枚登録したい",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "インデックス",
+      "quantity": 200
+    }
+  },
+  {
+    "user_content": "ラベルシール80枚を在庫に",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "ラベルシール",
+      "quantity": 80
+    }
+  },
+  {
+    "user_content": "封筒100枚補充してください",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "封筒",
+      "quantity": 100
+    }
+  },
+  {
+    "user_content": "便箋90枚追加",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "便箋",
+      "quantity": 90
+    }
+  },
+  {
+    "user_content": "はがき150枚を保管して",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "はがき",
+      "quantity": 150
+    }
+  },
+  {
+    "user_content": "ダブルクリップ300個入荷",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "ダブルクリップ",
+      "quantity": 300
+    }
+  },
+  {
+    "user_content": "輪ゴム500個ストックしたい",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "輪ゴム",
+      "quantity": 500
+    }
+  },
+  {
+    "user_content": "穴あけパンチ8個を登録",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "穴あけパンチ",
+      "quantity": 8
+    }
+  },
+  {
+    "user_content": "クリアホルダー140枚補充して",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "クリアホルダー",
+      "quantity": 140
+    }
+  },
+  {
+    "user_content": "リングファイル35冊追加してほしい",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "リングファイル",
+      "quantity": 35
+    }
+  },
+  {
+    "user_content": "フラットファイル42冊を在庫に加えて",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "フラットファイル",
+      "quantity": 42
+    }
+  },
+  {
+    "user_content": "パイプ式ファイル28冊保管",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "パイプ式ファイル",
+      "quantity": 28
+    }
+  },
+  {
+    "user_content": "伝票ファイル20冊ストック",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "伝票ファイル",
+      "quantity": 20
+    }
+  },
+  {
+    "user_content": "名刺ホルダー15個を追加",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "名刺ホルダー",
+      "quantity": 15
+    }
+  },
+  {
+    "user_content": "カードケース18個登録してください",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "カードケース",
+      "quantity": 18
+    }
+  },
+  {
+    "user_content": "ペーパーカッター5台補充したい",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "ペーパーカッター",
+      "quantity": 5
+    }
+  },
+  {
+    "user_content": "シュレッダー3台を在庫に入れて",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "シュレッダー",
+      "quantity": 3
+    }
+  },
+  {
+    "user_content": "ラミネーター4台追加",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "ラミネーター",
+      "quantity": 4
+    }
+  },
+  {
+    "user_content": "メモ帳15冊を取り出して",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "メモ帳",
+      "quantity": 15
+    }
+  },
+  {
+    "user_content": "付箋紙30個削除したい",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "付箋紙",
+      "quantity": 30
+    }
+  },
+  {
+    "user_content": "インデックス50枚減らして",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "インデックス",
+      "quantity": 50
+    }
+  },
+  {
+    "user_content": "ラベルシール20枚を在庫から外す",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "ラベルシール",
+      "quantity": 20
+    }
+  },
+  {
+    "user_content": "封筒25枚出庫してください",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "封筒",
+      "quantity": 25
+    }
+  },
+  {
+    "user_content": "便箋18枚払い出して",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "便箋",
+      "quantity": 18
+    }
+  },
+  {
+    "user_content": "はがき40枚を消去",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "はがき",
+      "quantity": 40
+    }
+  },
+  {
+    "user_content": "ダブルクリップ80個削除したい",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "ダブルクリップ",
+      "quantity": 80
+    }
+  },
+  {
+    "user_content": "輪ゴム150個取り除いて",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "輪ゴム",
+      "quantity": 150
+    }
+  },
+  {
+    "user_content": "穴あけパンチ2個を在庫から減らす",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "穴あけパンチ",
+      "quantity": 2
+    }
+  },
+  {
+    "user_content": "クリアホルダー35枚出して",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "クリアホルダー",
+      "quantity": 35
+    }
+  },
+  {
+    "user_content": "リングファイル8冊削除してほしい",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "リングファイル",
+      "quantity": 8
+    }
+  },
+  {
+    "user_content": "フラットファイル12冊を払い出し",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "フラットファイル",
+      "quantity": 12
+    }
+  },
+  {
+    "user_content": "パイプ式ファイル5冊減らしてください",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "パイプ式ファイル",
+      "quantity": 5
+    }
+  },
+  {
+    "user_content": "伝票ファイル4冊取り出したい",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "伝票ファイル",
+      "quantity": 4
+    }
+  },
+  {
+    "user_content": "名刺ホルダー3個除外",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "名刺ホルダー",
+      "quantity": 3
+    }
+  },
+  {
+    "user_content": "カードケース5個を在庫から外して",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "カードケース",
+      "quantity": 5
+    }
+  },
+  {
+    "user_content": "ペーパーカッター1台削除して",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "ペーパーカッター",
+      "quantity": 1
+    }
+  },
+  {
+    "user_content": "シュレッダー1台を出庫",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "シュレッダー",
+      "quantity": 1
+    }
+  },
+  {
+    "user_content": "ラミネーター2台減らしたい",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "ラミネーター",
+      "quantity": 2
+    }
+  },
+  {
+    "user_content": "電源タップ12個追加してください",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "電源タップ",
+      "quantity": 12
+    }
+  },
+  {
+    "user_content": "延長コード8本をストック",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "延長コード",
+      "quantity": 8
+    }
+  },
+  {
+    "user_content": "マウス20個登録したい",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "マウス",
+      "quantity": 20
+    }
+  },
+  {
+    "user_content": "キーボードカバー16枚を補充",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "キーボードカバー",
+      "quantity": 16
+    }
+  },
+  {
+    "user_content": "液晶クリーナー25本追加して",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "液晶クリーナー",
+      "quantity": 25
+    }
+  },
+  {
+    "user_content": "OAクリーナー30本を在庫に",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "OAクリーナー",
+      "quantity": 30
+    }
+  },
+  {
+    "user_content": "エアダスター18本保管してほしい",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "エアダスター",
+      "quantity": 18
+    }
+  },
+  {
+    "user_content": "ウェットティッシュ50箱入荷",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "ウェットティッシュ",
+      "quantity": 50
+    }
+  },
+  {
+    "user_content": "除菌スプレー22本ストックして",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "除菌スプレー",
+      "quantity": 22
+    }
+  },
+  {
+    "user_content": "マスク200枚を登録",
+    "tool_name": "add_item",
+    "tool_arguments": {
+      "name": "マスク",
+      "quantity": 200
+    }
+  },
+  {
+    "user_content": "電源タップ3個を取り出したい",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "電源タップ",
+      "quantity": 3
+    }
+  },
+  {
+    "user_content": "延長コード2本削除して",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "延長コード",
+      "quantity": 2
+    }
+  },
+  {
+    "user_content": "マウス5個を減らす",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "マウス",
+      "quantity": 5
+    }
+  },
+  {
+    "user_content": "キーボードカバー4枚出庫してください",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "キーボードカバー",
+      "quantity": 4
+    }
+  },
+  {
+    "user_content": "液晶クリーナー6本払い出して",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "液晶クリーナー",
+      "quantity": 6
+    }
+  },
+  {
+    "user_content": "OAクリーナー8本を消去",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "OAクリーナー",
+      "quantity": 8
+    }
+  },
+  {
+    "user_content": "エアダスター4本削除したい",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "エアダスター",
+      "quantity": 4
+    }
+  },
+  {
+    "user_content": "ウェットティッシュ12箱を在庫から外して",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "ウェットティッシュ",
+      "quantity": 12
+    }
+  },
+  {
+    "user_content": "除菌スプレー5本取り除いて",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "除菌スプレー",
+      "quantity": 5
+    }
+  },
+  {
+    "user_content": "マスク50枚減らしてほしい",
+    "tool_name": "remove_item",
+    "tool_arguments": {
+      "name": "マスク",
+      "quantity": 50
     }
   },
   {
@@ -163,11 +1392,31 @@
     "assistant_content": "どういたしまして！在庫管理でお手伝いが必要な場合はいつでもお声がけください。"
   },
   {
+    "user_content": "助かります",
+    "assistant_content": "お役に立てて嬉しいです！他に在庫管理でお手伝いできることがあれば、お気軽にお申し付けください。"
+  },
+  {
     "user_content": "今日の天気は？",
     "assistant_content": "申し訳ございませんが、私は在庫管理専門です。在庫のアイテムの追加、削除、一覧表示はお手伝いできますが、天気情報にはアクセスできません。"
   },
   {
     "user_content": "ピザを注文できる？",
     "assistant_content": "食べ物の注文はできませんが、在庫管理のお手伝いはできます！在庫のアイテムを追加、削除、または確認しますか？"
+  },
+  {
+    "user_content": "音楽を再生して",
+    "assistant_content": "音楽の再生機能はありませんが、在庫管理でしたらお手伝いできます。アイテムの追加、削除、確認など、どうしましょうか？"
+  },
+  {
+    "user_content": "明日の予定は？",
+    "assistant_content": "スケジュール管理機能はございませんが、在庫管理は専門です。在庫に関して何かお手伝いできることはありますか？"
+  },
+  {
+    "user_content": "おすすめの映画は？",
+    "assistant_content": "映画の推薦はできませんが、在庫管理システムとしてお手伝いします。在庫の確認や更新が必要でしたらお知らせください。"
+  },
+  {
+    "user_content": "お疲れ様です",
+    "assistant_content": "お疲れ様です！在庫管理で何かサポートが必要でしたら、いつでもお声がけください。"
   }
 ]
